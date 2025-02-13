@@ -1,0 +1,41 @@
+name: unicef-ecaro-cpe
+channels:
+  - conda-forge
+dependencies:
+  - black
+  - flake8
+  - isort
+  - pip
+  - typer
+  - loguru
+  - ipython
+  - jupyterlab
+  - ploomber
+  - boto3
+  - pip:
+    - python-dotenv
+    - pandas
+    - openpyxl~=3.1.2
+    - pypdfium2==4.30.0
+    - python-docx~=1.1.0
+    - scikit-learn==1.4.0
+    - matplotlib
+    - plotly
+    - kaleido==0.2.1
+    - tqdm
+    - notebook~=7.0.7
+    - openai~=1.13.3
+    - python-dotenv
+    - papermill~=2.6.0
+    - langchain
+    - langchain-community
+    - langchain-core
+    - langchain-text-splitters
+    - pypdfium2==4.30.0
+    - ollama
+    - langchain-ollama
+    - langchain-openai
+    - pdf2image==1.17.0
+    - pytesseract==0.3.13
+    - pdfplumber==0.11.4
+    - pyarrow==18.0.0

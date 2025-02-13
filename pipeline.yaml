@@ -1,0 +1,392 @@
+meta:
+    extract_upstream: false
+
+tasks:
+  - source: pipelines/01_text_extraction.ipynb
+    name: 01_text_extraction
+    #upstream: 
+    product: 
+      nb: notebooks/pipeline_output/01_text_extraction.ipynb
+      data: data/interim/{{COUNTRY}}/unicef-ecaro-cpe-corpus.jsonl 
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/corpora'
+
+  - source: pipelines/02_summary_narrative_ouput_level.ipynb
+    name: 02_summary_narrative_ouput_level
+    #upstream: 
+    product: 
+      nb: notebooks/pipeline_output/02_summary_narrative_ouput_level.ipynb
+      data: data/processed/{{COUNTRY}}/output-summary-narrative.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-ram-combined-outcomes-outputs-and-end-year-summary-narratives-report'
+
+  - source: pipelines/03_coars_narratives.ipynb
+    name: 03_coars_narratives
+    upstream: 01_text_extraction
+    product: 
+      nb: notebooks/pipeline_output/03_coars_narratives.ipynb
+      data: data/processed/{{COUNTRY}}/narrative_by_section.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: data/raw/insight-ram-summary-narrative-analysis
+      STARTING_YEAR: '{{STARTING_YEAR}}'
+
+  - source: pipelines/04_coars_context_summarization.ipynb
+    name: 04_coars_context_summarization
+    upstream: 03_coars_narratives
+    product: 
+      nb: notebooks/pipeline_output/04_coars_context_summarization.ipynb
+      data: data/processed/{{COUNTRY}}/coar_context_summaries.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      STARTING_YEAR: '{{STARTING_YEAR}}'
+
+  - source: pipelines/05_identify_and_extract_innovations.ipynb
+    name: 05_identify_and_extract_innovations
+    upstream: [03_coars_narratives, 02_summary_narrative_ouput_level]
+    product: 
+      nb: notebooks/pipeline_output/05_identify_and_extract_innovations.ipynb
+      data: data/processed/{{COUNTRY}}/evidence_of_innovations.xlsx 
+    params:
+      COUNTRY: '{{COUNTRY}}'
+
+  - source: pipelines/06_identify_and_extract_gender_activity.ipynb
+    name: 06_identify_and_extract_gender_activity
+    upstream: 03_coars_narratives
+    product: 
+      nb: notebooks/pipeline_output/06_identify_and_extract_gender_activity.ipynb
+      data: data/processed/{{COUNTRY}}/evidence_of_gender_activity.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+
+  - source: pipelines/07_coars_needs_extraction_classification.ipynb
+    name: 07_coars_needs_extraction_classification
+    upstream: 03_coars_narratives
+    product: 
+      nb: notebooks/pipeline_output/07_coars_needs_extraction_classification.ipynb
+      data: data/processed/{{COUNTRY}}/coar_needs_by_goal_area.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+  
+# Needs chatGPT access
+  - source: pipelines/100_coar_sections.ipynb
+    name: 100_coar_sections
+    #upstream: 
+    product: 
+      nb: notebooks/pipeline_output/100_coar_sections.ipynb
+      data: data/processed/{{COUNTRY}}/COAR_Sections.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-ram-summary-narrative-analysis'
+
+  - source: pipelines/101_coar_partnerships_and_collaborations.ipynb
+    name: 101_coar_partnerships_and_collaborations
+    upstream: 100_coar_sections
+    product: 
+      nb: notebooks/pipeline_output/101_coar_partnerships_and_collaborations.ipynb
+      data: data/processed/{{COUNTRY}}/coars_partnerships_summary.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+
+  - source: pipelines/110_coar_narrative_innovation.ipynb
+    name: 110_coar_narrative_innovation
+    upstream: 100_coar_sections 
+    product: 
+      nb: notebooks/pipeline_output/110_coar_narrative_innovation.ipynb
+      data: data/processed/{{COUNTRY}}/coars_innovation_summary.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+
+  - source: pipelines/120_coar_summaries.ipynb
+    name: 120_coar_summaries
+    upstream: 100_coar_sections 
+    product: 
+      nb: notebooks/pipeline_output/120_coar_summaries.ipynb
+      data: data/processed/{{COUNTRY}}/COAR_summaries.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+
+
+  - source: pipelines/11_insight_trips.ipynb
+    name: 11_insight_trips
+    #upstream: 
+    product: 
+      nb: notebooks/pipeline_output/11_insight_trips.ipynb
+      data: data/processed/{{COUNTRY}}/insight_trips.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-finance-trips'
+
+
+  - source: pipelines/01_cpd_priorities.ipynb
+    name: 01_cpd_priorities
+    #upstream: manually generated dataset, compiled by copy-pasting text from the respective sections in Country Programme Documents (CPDs).
+    product: 
+      nb: notebooks/pipeline_output/01_cpd_priorities.ipynb
+      data: data/processed/{{COUNTRY}}/CPD_priorities.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/unicef-ecaro-cpd-priorities.xlsx'
+
+  - source: pipelines/11_sitans_recommendations_extraction_classification.ipynb
+    name: 11_sitans_recommendations_extraction_classification
+   #upstream: 
+    product: 
+      nb: notebooks/pipeline_output/11_sitans_recommendations_extraction_classification.ipynb
+      data: data/processed/{{COUNTRY}}/sitans_reccomendations_by_goal_area.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/corpora/sitans/'
+  
+  - source: pipelines/12_unsdcf_national_priorities_extraction_classification.ipynb
+    name: 12_unsdcf_national_priorities_extraction_classification
+    #upstream: 
+    product: 
+      nb: notebooks/pipeline_output/12_unsdcf_national_priorities_extraction_classification.ipynb
+      data: data/processed/{{COUNTRY}}/unsdcf_df_priorities_by_goal_area.xlsx 
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/corpora/unsdcf/'
+
+  - source: pipelines/13_psns_comparative_advantages_extraction.ipynb
+    name: 13_psns_comparative_advantages_extraction
+    #upstream: 
+    product: 
+      nb: notebooks/pipeline_output/13_psns_comparative_advantages_extraction.ipynb
+      data: data/processed/{{COUNTRY}}/psns_comparative_advantages.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/corpora/psns/'
+
+#   - source: pipelines/15_rd_letters_strengths_improvement.ipynb
+#     name: 15_rd_letters_strengths_improvement
+#     # upstream: 
+#     product: 
+#       nb: notebooks/pipeline_output/15_rd_letters_strengths_improvement.ipynb
+#       data: data/processed/{{COUNTRY}}/rd_letters-strengths-improvement.xlsx
+#     params:
+#       COUNTRY: '{{COUNTRY}}'
+#       data_source: 'data/corpora/rdletters/' 
+
+
+  - source: pipelines/20_activities_programme_stucture.ipynb
+    name: 20_activities_programme_stucture
+    #upstream: raw/insight-programme-programme-structure/Programme Structure.csv through function get_programme_structure() from cpe.processing
+    product:
+      nb: notebooks/pipeline_output/20_activities_programme_stucture.ipynb
+      data: data/processed/{{COUNTRY}}/activities_programme_stucture.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-programme-cubes/Funds Utilization Analysis Cube - Activity By Year.xlsx'
+
+  - source: pipelines/21_resources_activities_programme_stucture.ipynb
+    name: 21_resources_activities_programme_stucture
+   #upstream: raw/insight-programme-programme-structure/Programme Structure.csv through function get_programme_structure() from cpe.processing
+    product:
+        nb: notebooks/pipeline_output/21_resources_activities_programme_stucture.ipynb
+        data: data/processed/{{COUNTRY}}/resources_activities_programme_stucture.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-programme-cubes/Funds Utilization Analysis Cube - Activity By Year.xlsx'
+
+  - source: pipelines/30_funds_goal_result.ipynb
+    name: 30_funds_goal_result
+    product:
+      nb: notebooks/pipeline_output/30_funds_goal_result.ipynb
+      data: data/processed/{{COUNTRY}}/funds_goal_result_view.xlsx
+      # OUTPUT_DATA_DIR.joinpath('funds_goal_result_view.xlsx')
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-funds-utilization-by-goal-and-result-area'
+
+  - source: pipelines/40_programme_structure.ipynb
+    name: 40_programme_structure
+    product:
+      nb: notebooks/pipeline_output/40_programme_structure.ipynb
+      data: data/processed/{{COUNTRY}}/programme_structure.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-programme-programme-structure/Programme Structure.csv'
+
+  - source: pipelines/70_gender_disability_tags.ipynb
+    name: 70_gender_disability_tags
+    # upstream: 
+    product: 
+      nb: notebooks/pipeline_output/70_gender_disability_tags.ipynb
+      data: data/processed/{{COUNTRY}}/gender_disability_tags.xlsx 
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-programme-management'
+
+  - source: pipelines/90_total_indicator_achievements.ipynb
+    name: 90_total_indicator_achievements
+    # upstream: 
+    product: 
+      nb: notebooks/pipeline_output/90_total_indicator_achievements.ipynb
+      data: data/processed/{{COUNTRY}}/total_indicator_achievements.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-ram-data-sets'
+  
+  - source: pipelines/130_hr_regional_office.ipynb
+    name: 130_hr_regional_office
+    upstream: 20_activities_programme_stucture
+    product: 
+      nb: notebooks/pipeline_output/130_hr_regional_office.ipynb
+      data: data/processed/{{COUNTRY}}/HR_staff_data.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/hr-regional-office/Staff data 2024-2016.xlsx'
+
+# # this has Social Media Dependancies
+#   - source: pipelines/131_social_media_funds_hr_count.ipynb
+#     name: 131_social_media_funds_hr_count
+#     # upstream: [130_hr_regional_office, SOCIAL MEDIA NOTEBOOK]
+#     product: 
+#       nb: notebooks/pipeline_output/131_social_media_funds_hr_count.ipynb
+#       data: data/processed/social_media_funds_HR.xlsx
+#       # OUTPUT_DATA_DIR.joinpath('social_media_funds_HR.xlsx') 
+#     params:
+#       COUNTRY: '{{COUNTRY}}'
+#       data_source: ['data/processed/HR_staff_data.xlsx', 'data/processed/social-media-GA-mention-share-by-patrner-type.xlsx']
+#       # OUTPUT_DATA_DIR.joinpath('HR_staff_data.xlsx') 
+#       # OUTPUT_DATA_DIR.joinpath('social-media-GA-mention-share-by-patrner-type.xlsx')
+
+  - source: pipelines/90_partnership_transfers.ipynb
+    name: 90_partnership_transfers
+    #upstream: 
+    product: 
+      nb: notebooks/pipeline_output/90_partnership_transfers.ipynb
+      data: data/processed/{{COUNTRY}}/partnership_transfers.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-dct-partnerships/insight-dct-partnerships-analysis-cube.xlsx'
+  
+  # - source: pipelines/150_partnerships_from_insight.ipynb
+  #   name: 150_partnerships_from_insight
+  #   upstream: 180_sources_to_SDG_areas
+  #   #upstream: raw/insight-programme-programme-structure/Programme Structure.csv' through function get_programme_structure() from cpe.processing
+  #   product: 
+  #     nb: notebooks/pipeline_output/150_partnerships_from_insight.ipynb
+  #     data: data/processed/partnerships_from_insight.xlsx
+  #     data2: data/processed/partnerships_from_insight_rel_activities.xlsx  
+  #   params:
+  #     COUNTRY: '{{COUNTRY}}'
+  #     data_source: ['data/raw/insight-utilization-against-pd-ssfa', 
+  #     'data/raw/insight-dct-partners-funds-info/insight-dct-partners-funds-info.xlsx',
+  #     'data/raw/insight-dct-partners-partner-fr-activity-relation/insight-dct-partners-partner-fr-activity-relation.xlsx',
+  #     'data/raw/insight-dct-partners-partners-by-country/insight-dct-partners-partners-by-country.xlsx',
+  #     'data/processed/cp_funds_and_SDG.xlsx',
+  #     'data/raw/pbi_programme_data_explorer_subnational [wbs_activity_location]/activity_location.xlsx'
+  #     ]
+
+  
+#  # same output as 150?
+#   # - source: pipelines/151_partnerships_from_insigt_rel_activities.ipynb
+#   #   name: 151_partnerships_from_insigt_rel_activities
+#   #   # upstream: ?
+#   #   product: 
+#   #     nb: notebooks/pipeline_output/151_partnerships_from_insigt_rel_activities.ipynb
+#   #     data: data/processed/partnerships_from_insight_rel_activities.xlsx
+#   #         # target_data_path = OUTPUT_DATA_DIR / 'partnerships_from_insight_rel_activities.xlsx'   
+#   #   params:
+#   #     COUNTRY: '{{COUNTRY}}'
+#   #     data_source:
+#   #     # data_path_funds_info = Path(RAW_DATA_DIR).joinpath('insight-dct-partners-funds-info') / 'insight-dct-partners-funds-info.xlsx'
+#   #     # data_path_partner_fr_activity_rel = Path(RAW_DATA_DIR).joinpath('insight-dct-partners-partner-fr-activity-relation') / 'insight-dct-partners-partner-fr-activity-relation.xlsx'
+#   #     # data_path_partner_by_country = Path(RAW_DATA_DIR).joinpath('insight-dct-partners-partners-by-country') / 'insight-dct-partners-partners-by-country.xlsx'
+
+
+
+#   - source: pipelines/170_donor_funds_distribution.ipynb
+#     name: 170_donor_funds_distribution
+#     # upstream: 
+#     product: 
+#       nb: notebooks/pipeline_output/170_donor_funds_distribution.ipynb
+#       data: data/processed/cp_funds_stucture.xlsx
+#     params:
+#       COUNTRY: '{{COUNTRY}}'
+#       data_source: ['data/raw/insights-contributions-income-analysis-cube/insights-contributions-income-analysis-cube-donor-name-country-level2.xlsx',
+#                     'data/raw/insight-finance-admin-donor-statement-cube']
+
+
+  - source: pipelines/180_sources_to_SDG_areas.ipynb
+    name: 180_sources_to_SDG_areas
+    # upstream: 
+    product: 
+      nb: notebooks/pipeline_output/180_sources_to_SDG_areas.ipynb
+      data: data/processed/{{COUNTRY}}/cp_funds_and_SDG.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: ['data/raw/insight-programme-strategic-sdg-expenditure/insight-programme-strategic-sdg-activity-sp-2018-2021.xlsx',
+                    'data/raw/insight-programme-strategic-sdg-expenditure/insight-programme-strategic-sdg-activity-sp-2022-2025.xlsx',
+                    'data/raw/insight-programme-strategic-sdg-expenditure/insight-programme-strategic-sdg-activity-sp-2016-2017.xlsx']
+
+
+
+
+
+  - source: pipelines/50_parttners_to_type.ipynb
+    name: 50_parttners_to_type
+    # upstream: 
+    product: 
+      nb: notebooks/pipeline_output/50_parttners_to_type.ipynb
+      data: data/processed/{{COUNTRY}}/unsdcf-partner_type_mapping.xlsx 
+      data2: data/processed/{{COUNTRY}}/unsdcf-framework-with-partner-types.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: ['data/raw/unsdcf-framework/unsdcf-framework-2021-2025-exported-2024-11-18-3.csv', 
+                    'data/raw/insight-ram3-partner-types/ecar-partner-list.xlsx']
+
+  - source: pipelines/51_agencies_to_goal_areas.ipynb
+    name: 51_agencies_to_goal_areas
+    upstream: 50_parttners_to_type
+    product: 
+      nb: notebooks/pipeline_output/51_agencies_to_goal_areas.ipynb
+      data: data/processed/{{COUNTRY}}/agencies_SDG_and_outcomes.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+
+      
+
+
+  - source: pipelines/60_insight_indicators.ipynb
+    name: 60_insight_indicators
+    #upstream: 
+    product: 
+      nb: notebooks/pipeline_output/60_insight_indicators.ipynb
+      data: data/processed/{{COUNTRY}}/insight_indicators.xlsx
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: 'data/raw/insight-ram-data-sets'
+
+
+  - source: pipelines/61_indicator_mapping.ipynb
+    name: 61_indicator_mapping
+    upstream: 60_insight_indicators 
+    product: 
+      nb: notebooks/pipeline_output/61_indicator_mapping.ipynb
+      data: data/processed/{{COUNTRY}}/indicator_codes.xlsx  
+    params:
+      COUNTRY: '{{COUNTRY}}'
+      data_source: ['data/raw/Standard and Additional Indicators/Standard and Additional Indicators-cp-2018-2021.xlsx', 'data/raw/Standard and Additional Indicators/Standard and Additional Indicators-cp-2022-2025.xlsx']
+
+
+#   - source: pipelines/sustainability-2.ipynb
+#     name: sustainability-2
+#    #  upstream: 
+#     product:
+#       nb: notebooks/pipeline_output/sustainability-2.ipynb
+#       data: data/processed/partnership_agreements.xlsx
+#     params: 
+#       COUNTRY: '{{COUNTRY}}'
+#       data_source: 'data/raw/etools-datamart/Full Partner Agreement List 20240903.json'
+     
+# # 200 + are social media (not included in pipeline)
+# # notebooks without numbers not included in report apart from sustainability-2.ipynb
+
+
+
+

@@ -1,0 +1,166 @@
+/* Optional: Define the primary color if not already in the theme */
+:root {
+  --color-primary: #1CABE2; /* Replace this with your desired primary color */
+  --deep-blue: #0058AB;   /* Deep Blue (commented out in the list) */
+  --medium-blue-purple: #374EA2;   /* Medium Blue/Purple-ish */
+  --bright-cyan-light-blue: #1CABE2;   /* Bright Cyan/Light Blue */
+  --dark-green: #00833D;   /* Dark Green */
+  --lime-green: #80BD41;   /* Lime Green */
+  --dark-purple: #6A1E74;   /* Dark Purple */
+  --deep-maroon: #961A49;   /* Deep Maroon */
+  --bright-red: #E2231A;   /* Bright Red */
+  --bright-orange: #F26A21;   /* Bright Orange */
+  --bright-yellow: #FFC20E;   /* Bright Yellow */
+  --pale-yellow-cream: #FFF09C;   /* Pale Yellow/Cream */
+  --medium-gray: #9E9E9E;   /* Medium Gray */
+  --raisin-black: #231f20;   /* Raisin Black */
+
+  /* Grays Palette */
+  --gray-dark: #333333;
+  --gray-medium-dark: #6B6B6B;
+  --gray-medium: #B3B3B3;
+  --gray-light: #D7D7D7;
+  --gray-very-light: #E8E8E8;
+
+  /* Programmatic Area Colors */
+  --survive-and-thrive: #0058AB;  /* Deep Blue */
+  --protection-from-violence: #1CABE2;  /* Bright Cyan/Light Blue */
+  --safe-and-clean-environment: #00833D;  /* Dark Green */
+  --equitable-chance-in-life: #80BD41;  /* Lime Green */
+  --cross-sectoral: #6A1E74;  /* Dark Purple */
+  --learn: #961A49;  /* Deep Maroon */
+  --management: #E2231A;  /* Bright Red */
+  --un-coordination: #F26A21;  /* Bright Orange */
+  --special-purpose: #FFC20E;  /* Bright Yellow */
+  --development-effectiveness: #FFF09C;  /* Pale Yellow/Cream */
+  --independent-oversight-assurance: #9E9E9E;  /* Medium Gray */
+
+}
+
+
+/* General layout for the entire container */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* Year accordion behavior */
+.year-details {
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+/* Year summary with thematic area preview */
+.year-summary {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  text-align: left;  /* Ensure left alignment */
+  width: 100%;       /* Ensure the summary takes full width */
+  display: block;     /* Block display ensures full width and proper alignment */
+}
+
+/* Padding for the description text within the details tag */
+.year-details > summary + p {
+  padding: 10px 15px;  /* Add padding to the description text */
+  background-color: #fafafa; /* Optional: Light background color for description area */
+  border-radius: 5px;   /* Optional: Round the edges for a softer look */
+  margin-bottom: 10px;  /* Add margin below for better spacing */
+}
+
+/* Thematic area preview styling inside year summary */
+.year-summary::after {
+  content: ""; /* Remove placeholder for preview text */
+  font-size: 14px;
+  color: #666;
+  margin-left: 10px;
+}
+
+/* Accordion for thematic areas inside each year */
+.box {
+  width: 100%;
+  margin-bottom: 10px;
+  border: none;
+}
+
+/* Summary header for each thematic area, behaves like an accordion */
+summary {
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #2196F3;
+  color: white;
+  border-radius: 5px;
+  text-align: left;   /* Ensure left alignment */
+  outline: none;
+  margin-bottom: 5px;
+}
+
+/* Bullet point list inside thematic area */
+ul {
+  padding-left: 20px;
+  margin: 10px;
+}
+
+/* Individual bullet points */
+li {
+  margin-bottom: 5px;
+}
+
+/* Styling for open year and thematic area summaries */
+details[open] .year-summary {
+  background-color: #e0e0e0;
+}
+
+details[open] summary {
+  background-color: #0073e6;
+}
+
+
+/* Define a custom color for callout-note */
+.callout-note {
+  border-left: 5px solid #E2231A; 
+   
+}
+/* Specific override for minimal callouts */
+.callout-note[appearance="minimal"] {
+  border-left: 5px solid #E2231A !important;  
+}
+
+
+
+/* Define a custom callout named "rabbit" */
+.callout-rabbit {
+
+  background-color: transparent; /* Remove background color */
+  border-left: 3px solid var(--color-primary); /* Minimal left border */
+  padding: 10px; /* Minimal padding */
+  border-radius: 0px; /* No rounded corners */
+  margin-bottom: 10px; /* Small space at the bottom */
+  font-size: 1rem; /* Standard font size */
+  color: inherit; /* Inherit text color from surrounding content */
+}
+
+.callout-rabbit h2, .callout-rabbit h3 {
+  color: inherit; /* Inherit heading color from surrounding content */
+  font-weight: bold; /* Bold headings */
+  margin-top: 0;
+}
+
+.callout-rabbit p {
+  margin: 0; /* Minimal margin for paragraphs */
+}
+
