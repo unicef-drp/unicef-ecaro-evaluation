@@ -1,0 +1,140 @@
+[
+    {
+        "iso": "ALB",
+        "name": "Albania",
+        "code": "0090",
+        "priority": false
+    },
+    {
+        "iso": "ARM",
+        "name": "Armenia",
+        "code": "0260",
+        "priority": true
+    },
+    {
+        "iso": "AZE",
+        "name": "Azerbaijan",
+        "code": "0310",
+        "priority": true
+    },
+    {
+        "iso": "BGR",
+        "name": "Bulgaria",
+        "code": "0570",
+        "priority": false
+    },
+    {
+        "iso": "BIH",
+        "name": "Bosnia and Herzegovina",
+        "code": "0530",
+        "priority": true
+    },
+    {
+        "iso": "BLR",
+        "name": "Belarus",
+        "code": "0630",
+        "priority": true
+    },
+    {
+        "iso": "GEO",
+        "name": "Georgia",
+        "code": "1600",
+        "priority": true
+    },
+    {
+        "iso": "GRC",
+        "name": "Greece",
+        "code": "1650",
+        "priority": false
+    },
+    {
+        "iso": "HRV",
+        "name": "Croatia",
+        "code": "1030",
+        "priority": false
+    },
+    {
+        "iso": "KAZ",
+        "name": "Kazakhstan",
+        "code": "2390",
+        "priority": true
+    },
+    {
+        "iso": "XKK",
+        "name": "Kosovo (UN SC resolution 1244)",
+        "code": "8971",
+        "priority": false
+    },
+    {
+        "iso": "KGZ",
+        "name": "Kyrgyzstan",
+        "code": "2450",
+        "priority": false
+    },
+    {
+        "iso": "MDA",
+        "name": "Republic of Moldova",
+        "code": "5640",
+        "priority": false
+    },
+    {
+        "iso": "MKD",
+        "name": "North Macedonia",
+        "code": "2660",
+        "priority": true
+    },
+    {
+        "iso": "MNE",
+        "name": "Montenegro",
+        "code": "8950",
+        "priority": false
+    },
+    {
+        "iso": "POL",
+        "name": "Poland",
+        "code": "3450",
+        "priority": false
+    },
+    {
+        "iso": "ROU",
+        "name": "Romania",
+        "code": "3660",
+        "priority": false
+    },
+    {
+        "iso": "SRB",
+        "name": "Serbia",
+        "code": "8970",
+        "priority": false
+    },
+    {
+        "iso": "TJK",
+        "name": "Tajikistan",
+        "code": "4150",
+        "priority": false
+    },
+    {
+        "iso": "TKM",
+        "name": "Turkmenistan",
+        "code": "4360",
+        "priority": true
+    },
+    {
+        "iso": "TUR",
+        "name": "T\u00fcrkiye",
+        "code": "4350",
+        "priority": true
+    },
+    {
+        "iso": "UKR",
+        "name": "Ukraine",
+        "code": "4410",
+        "priority": false
+    },
+    {
+        "iso": "UZB",
+        "name": "Uzbekistan",
+        "code": "4630",
+        "priority": false
+    }
+]

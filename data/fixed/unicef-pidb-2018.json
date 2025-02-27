@@ -1,0 +1,3378 @@
+[
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-01",
+        "area_name":"Maternal and newborn health",
+        "sic_code":"21-01-01",
+        "sic_name":"Community and home based maternal and newborn care"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-01",
+        "area_name":"Maternal and newborn health",
+        "sic_code":"21-01-02",
+        "sic_name":"Facility based maternal and newborn care (including emergency obstetric and newborn care, quality improvement)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-01",
+        "area_name":"Maternal and newborn health",
+        "sic_code":"21-01-03",
+        "sic_name":"MNTE supplementary immunization activities"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-01",
+        "area_name":"Maternal and newborn health",
+        "sic_code":"21-01-04",
+        "sic_name":"TTCV and devices"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-01",
+        "area_name":"Maternal and newborn health",
+        "sic_code":"21-01-05",
+        "sic_name":"Maternal and newborn care policy advocacy, evidence generation, national \/ subnational capacity development"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-01",
+        "area_name":"Maternal and newborn health",
+        "sic_code":"21-01-99",
+        "sic_name":"Technical assistance - Maternal and newborn health"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-01",
+        "sic_name":"Demand for immunization (C4D)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-02",
+        "sic_name":"Immunization supply chain, including cold chain"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-03",
+        "sic_name":"Evidence generation and policy advocacy for immunization"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-04",
+        "sic_name":"Purchase of vaccines and devices"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-05",
+        "sic_name":"Immunization operations"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-06",
+        "sic_name":"Cholera supplementary immunization activities"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-07",
+        "sic_name":"Yellow fever supplementary immunization activities"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-08",
+        "sic_name":"Meningitis supplementary immunization activities"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-09",
+        "sic_name":"Measles and rubella supplementary immunization activities"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-10",
+        "sic_name":"Polio vaccines and devices"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-11",
+        "sic_name":"Polio social mobilization for campaigns"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-12",
+        "sic_name":"Continuous social mobilization and communication"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-13",
+        "sic_name":"Technical assistance - Polio"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-14",
+        "sic_name":"Polio operational costs"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-02",
+        "area_name":"Immunization",
+        "sic_code":"21-02-99",
+        "sic_name":"Technical assistance - Immunization (excluding Polio technical assistance)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-01",
+        "sic_name":"IMNCI \/ Integrated Community Case Management (iCCM) - Community"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-02",
+        "sic_name":"IMNCI facilities"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-03",
+        "sic_name":"Child health policy advocacy, evidence generation, national \/ subnational capacity development"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-04",
+        "sic_name":"Pneumonia (diagnosis, care and treatment)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-05",
+        "sic_name":"Diarrhoea (diagnosis, care and treatment)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-06",
+        "sic_name":"Malaria (diagnosis, care and treatment)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-07",
+        "sic_name":"Malaria bednets"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-08",
+        "sic_name":"Tuberculosis (diagnosis, care and treatment)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-09",
+        "sic_name":"HSS - Community Health System"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-10",
+        "sic_name":"HSS - Health systems procurement and supplies management"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-11",
+        "sic_name":"HSS - Health sector policy, planning and governance at national or sub-national levels"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-12",
+        "sic_name":"HSS - public finance management for Health"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-13",
+        "sic_name":"HSS - private sector engagement"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-14",
+        "sic_name":"HSS - Risk informed programming including climate resilience disaster and conflict"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-15",
+        "sic_name":"HSS - implementation research in Health"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-16",
+        "sic_name":"HSS - Management Information Systems"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-17",
+        "sic_name":"HSS - Health real time monitoring"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-18",
+        "sic_name":"Public health emergencies, including disease outbreaks"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-98",
+        "sic_name":"Technical assistance - HSS"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-03",
+        "area_name":"Child health",
+        "sic_code":"21-03-99",
+        "sic_name":"Technical assistance - Child health"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-01",
+        "sic_name":"Breastfeeding protection, promotion and support (including work on Code)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-02",
+        "sic_name":"Diet diversity in early childhood (children under 5), includes complementary feeding and MNPs"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-03",
+        "sic_name":"Vitamin A supplementation in early childhood (children under 5)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-04",
+        "sic_name":"Prevention of overweight and obesity in early childhood (children under 5)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-05",
+        "sic_name":"Maternal nutrition, including information, supplementation and counselling"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-06",
+        "sic_name":"Salt iodization and other large-scale food fortification"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-07",
+        "sic_name":"National multisectoral strategies and plans to prevent stunting (excludes intervention-specific strategies)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-08",
+        "sic_name":"Data, research, evaluation, evidence generation, synthesis, and use for prevention of stunting and other forms of malnutrition"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-09",
+        "sic_name":"Risk informed programming including climate resilience disaster and conflict"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-04",
+        "area_name":"Prevention of stunting and other forms of malnutrition",
+        "sic_code":"21-04-99",
+        "sic_name":"Technical assistance - Prevention of stunting and other forms of malnutrition"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-05",
+        "area_name":"Treatment of severe acute malnutrition",
+        "sic_code":"21-05-01",
+        "sic_name":"Care for children with severe acute malnutrition"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-05",
+        "area_name":"Treatment of severe acute malnutrition",
+        "sic_code":"21-05-02",
+        "sic_name":"Capacity building for nutrition preparedness and response"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-05",
+        "area_name":"Treatment of severe acute malnutrition",
+        "sic_code":"21-05-03",
+        "sic_name":"Nutrition humanitarian cluster\/humanitarian sector coordination"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-05",
+        "area_name":"Treatment of severe acute malnutrition",
+        "sic_code":"21-05-04",
+        "sic_name":"Data, research, evaluation, evidence generation, synthesis, and use for SAM and nutrition in emergencies"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-05",
+        "area_name":"Treatment of severe acute malnutrition",
+        "sic_code":"21-05-99",
+        "sic_name":"Technical assistance - Treatment of severe acute malnutrition"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-01",
+        "sic_name":"Infant and child HIV diagnosis (PITC)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-02",
+        "sic_name":"Paediatric ART"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-03",
+        "sic_name":"HIV health and community system strengthening to improve access and adherence"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-04",
+        "sic_name":"HIV and AIDS monitoring and bottleneck analysis"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-05",
+        "sic_name":"Procurement and or supply management for HIV diagnostics and medicine"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-06",
+        "sic_name":"Provision of ART to adolescents"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-07",
+        "sic_name":"Social protection measures in support of HIV-AIDS treatment"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-08",
+        "sic_name":"Support Policy and guidance developments and address barriers to accessing HIV services by adolescents including gender mainstreaming"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-09",
+        "sic_name":"ECD support for HIV infected and exposed children"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-10",
+        "sic_name":"Risk informed programming including climate resilience disaster and conflict"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-06",
+        "area_name":"Treatment and care of children living with HIV",
+        "sic_code":"21-06-99",
+        "sic_name":"Technical assistance - Treatment and care of children living with HIV"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-01",
+        "sic_name":"ART for PMTCT"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-02",
+        "sic_name":"ARV for infants"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-03",
+        "sic_name":"Harm reduction among adolescent drug users"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-04",
+        "sic_name":"HIV - Emergency preparedness and response including Post exposure prophylaxis and risk informed conflict sensitive HIV programming"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-05",
+        "sic_name":"HIV and sexuality education for adolescents"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-06",
+        "sic_name":"HIV Prevention programs for adolescents including Key population such as condom programming, VMMC and PreP"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-07",
+        "sic_name":"Child Protection measures in support of HIV affected families and communities"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-08",
+        "sic_name":"Maternal HIV testing and counselling (PITC)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-09",
+        "sic_name":"PMTCT program support such as retention in care, family planning, infant feeding, infant medical male circumcision and community facility linkages"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-10",
+        "sic_name":"Viral load monitoring (PMTCT)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-11",
+        "sic_name":"Address violence against girls and gender related issues as part of adolescent HIV programming"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-12",
+        "sic_name":"HIV testing including self testing and counselling in adolescents"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-13",
+        "sic_name":"Social protection measures in support of HIV-AIDS prevention"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-07",
+        "area_name":"HIV prevention",
+        "sic_code":"21-07-99",
+        "sic_name":"Technical assistance - HIV prevention"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-01",
+        "sic_name":"Capacity development of ECD frontline workers"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-02",
+        "sic_name":"Community based child care"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-03",
+        "sic_name":"ECD advocacy and communication including campaigns"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-04",
+        "sic_name":"ECD data, evidence, and knowledge generation and dissemination"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-05",
+        "sic_name":"ECD Policy and system strengthening"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-06",
+        "sic_name":"Parenting Programme to promote nurturing care and early stimulation"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-07",
+        "sic_name":"Integrating ECD in emergency preparedness and response"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-08",
+        "sic_name":"Partnerships development for ECD"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-09",
+        "sic_name":"Social and behavioural change communication for ECD"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-08",
+        "area_name":"Early childhood development",
+        "sic_code":"21-08-99",
+        "sic_name":"Technical assistance - Early childhood development"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-01",
+        "sic_name":"Prevention of undernutrition in middle childhood (5 to 9 years)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-02",
+        "sic_name":"Prevention of undernutrition in adolescence (10 to 19 years)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-03",
+        "sic_name":"Prevention of overweight and obesity in middle childhood (5 to 9 years)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-04",
+        "sic_name":"Prevention of overweight and obesity in adolescence (10 to 19 years)"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-05",
+        "sic_name":"Data\/research\/evaluation evidence generation, synthesis, and use for nutrition in middle childhood and adolescence"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-06",
+        "sic_name":"Adolescent pregnancy prevention"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-07",
+        "sic_name":"Adolescent development - health and wellbeing"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-08",
+        "sic_name":"Adolescent mental health"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-09",
+        "sic_name":"Health sector interventions to address VAC and\/or GBV"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-10",
+        "sic_name":"HPV Immunization and related interventions"
+    },
+    {
+        "domain_code":"21",
+        "domain_name":"Survive and Thrive",
+        "area_code":"21-09",
+        "area_name":"Adolescent health and nutrition",
+        "sic_code":"21-09-99",
+        "sic_name":"Technical assistance - Adolescent health and nutrition"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-01",
+        "sic_name":"Provision of (formal and non-formal) early-learning \/ pre-primary education (including in temporary learning spaces)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-02",
+        "sic_name":"Provision of parental education for school readiness (including in temporary learning spaces)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-03",
+        "sic_name":"Provision of (formal and non-formal) primary education (including in temporary learning spaces)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-04",
+        "sic_name":"Provision of (formal and non-formal) secondary education (including in temporary learning spaces)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-05",
+        "sic_name":"Provision of (formal and non-formal) multiple-levels or alternative pathways of education (including in temporary learning spaces)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-06",
+        "sic_name":"System strengthening - inclusive education for children with disabilities"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-07",
+        "sic_name":"System strengthening - inclusive education for other vulnerable children poorest quintile, ethnic\/linguistic minorities, migrant children, non-citizens\/undocumented children etc."
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-08",
+        "sic_name":"System strengthening - risk informed programming, including climate, resilience, disaster, conflict, and emergency preparedness"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-09",
+        "sic_name":"Peacebuilding education"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-10",
+        "sic_name":"System strengthening - gender-responsive access (excluding SRGBV)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-11",
+        "sic_name":"Other activities for equitable access to quality education e.g. school feeding, school grants"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-12",
+        "sic_name":"Education analyses including OOSCI, Education Sector Analyses, etc."
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-13",
+        "sic_name":"Education humanitarian cluster\/humanitarian sector coordination"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-14",
+        "sic_name":"Education Management Information System (EMIS) (excluding learning assessment systems)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-15",
+        "sic_name":"Education sector planning including coordinating role, SDG 4, etc."
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-16",
+        "sic_name":"Public finance management for education"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-17",
+        "sic_name":"School Related Gender-based Violence (SRGBV)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-18",
+        "sic_name":"United Nations Girls\u2019 Education Initiative (UNGEI) Secretariat"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-01",
+        "area_name":"Equitable access to quality education",
+        "sic_code":"22-01-99",
+        "sic_name":"Technical assistance - Equitable access to quality education"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-01",
+        "sic_name":"Provision or procurement of early-learning \/ pre-primary education learning materials"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-02",
+        "sic_name":"Provision or procurement of primary education learning materials"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-03",
+        "sic_name":"Provision or procurement of secondary education learning materials"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-04",
+        "sic_name":"Provision or procurement of multiple-levels (or alternative pathways of education) learning materials"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-05",
+        "sic_name":"Provision or procurement of accessible learning materials for children with disabilities"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-06",
+        "sic_name":"Digital learning materials and ICT in education"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-07",
+        "sic_name":"Provision of early learning \/ pre-primary education teacher training"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-08",
+        "sic_name":"Provision of primary education teacher training"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-09",
+        "sic_name":"Provision of secondary education teacher training"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-10",
+        "sic_name":"Provision of multiple-levels (or alternative pathways of education) teacher training"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-11",
+        "sic_name":"Provision of inclusive teacher training for children with disabilities"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-12",
+        "sic_name":"Provision of training of school communities e.g. parent teacher associations, school management committees"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-13",
+        "sic_name":"Provision of training of other education staff excluding teachers (e.g. inspectors, district, ministry staff, etc.)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-14",
+        "sic_name":"System strengthening - early learning \/ pre-primary policy, leadership, and budget"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-15",
+        "sic_name":"System strengthening - early learning \/ pre-primary standards and governance"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-16",
+        "sic_name":"System strengthening - early learning \/ pre-primary teaching and learning environment (including curriculum and material design)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-17",
+        "sic_name":"System strengthening - curricula and learning materials design (excluding early-learning \/ pre-primary)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-18",
+        "sic_name":"System strengthening - learning assessment systems"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-19",
+        "sic_name":"System strengthening - mother tongue \/ multilingual education"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-20",
+        "sic_name":"System strengthening - teacher development, management, and support"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-21",
+        "sic_name":"System strengthening - community participation and social accountability, e.g. school management committees"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-22",
+        "sic_name":"System strengthening - gender-responsive teaching and learning (excluding SRGBV)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-23",
+        "sic_name":"Education analyses including OOSCI, Education Sector Analyses, etc."
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-24",
+        "sic_name":"Education humanitarian cluster\/humanitarian sector coordination"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-25",
+        "sic_name":"Education Management Information System (EMIS) (excluding learning assessment systems)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-26",
+        "sic_name":"Education sector planning including coordinating role, SDG 4, etc."
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-27",
+        "sic_name":"Public finance management for education"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-28",
+        "sic_name":"School Related Gender-based Violence (SRGBV)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-29",
+        "sic_name":"United Nations Girls\u2019 Education Initiative (UNGEI) Secretariat"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-02",
+        "area_name":"Learning outcomes",
+        "sic_code":"22-02-99",
+        "sic_name":"Technical assistance - Learning outcomes"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-01",
+        "sic_name":"Provision of skills development for 5-9 year-olds (including in temporary learning spaces)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-02",
+        "sic_name":"Provision of skills development for adolescents (10-19 year-olds) (including in temporary learning spaces)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-03",
+        "sic_name":"Provision of skills development for multiple age groups (including in temporary learning spaces)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-04",
+        "sic_name":"System strengthening - mainstreaming of skills development within national education\/training system"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-05",
+        "sic_name":"System strengthening - responsiveness of education\/training system to the labour market"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-06",
+        "sic_name":"System strengthening - gender equitable skills development (excluding SRGBV)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-07",
+        "sic_name":"System strengthening - life skills (for personal empowerment, active citizenship, etc.)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-08",
+        "sic_name":"Education analyses including OOSCI, Education Sector Analyses, etc."
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-09",
+        "sic_name":"Education humanitarian cluster\/humanitarian sector coordination"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-10",
+        "sic_name":"Education Management Information System (EMIS) (excluding learning assessment systems)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-11",
+        "sic_name":"Education sector planning including coordinating role, SDG 4, etc."
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-12",
+        "sic_name":"Public finance management for education"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-13",
+        "sic_name":"School Related Gender-based Violence (SRGBV)"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-14",
+        "sic_name":"United Nations Girls\u2019 Education Initiative (UNGEI) Secretariat"
+    },
+    {
+        "domain_code":"22",
+        "domain_name":"Learn",
+        "area_code":"22-03",
+        "area_name":"Skills development",
+        "sic_code":"22-03-99",
+        "sic_name":"Technical assistance - Skills development"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-01",
+        "sic_name":"Legal and policy framework related to violence, exploitation and abuse"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-02",
+        "sic_name":"Services to prevent or respond to violence, exploitation and abuse"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-03",
+        "sic_name":"Services to prevent or respond to gender-based violence in emergencies"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-04",
+        "sic_name":"Psycho-social support in emergencies"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-05",
+        "sic_name":"Social welfare workforce systems strengthening (accreditation, staffing and supervision)"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-06",
+        "sic_name":"Public finance management for child protection"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-07",
+        "sic_name":"Administrative data and Information Management System (IMS) including CPIMS+, GBVIMS+, MRMIMS+"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-08",
+        "sic_name":"Family reunification in emergencies - prevention and response"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-09",
+        "sic_name":"Child labour"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-10",
+        "sic_name":"Children associated with armed forces and armed groups - prevention and response"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-11",
+        "sic_name":"Landmines and explosive weapons - prevention and assistance"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-12",
+        "sic_name":"MRM - Child protection monitoring and reporting of grave violations in armed conflict (Security Council Resolutions 1612, 1882, 1888 and 1960)"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-13",
+        "sic_name":"Child Protection - Emergency Preparedness"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-14",
+        "sic_name":"Parent\/caregiver education and programmes on violence, exploitation and abuse - across the life cycle"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-15",
+        "sic_name":"Parent\/caregiver education and programmes on violence, exploitation and abuse - 0 to 7 years"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-16",
+        "sic_name":"Parent\/caregiver education and programmes on violence, exploitation and abuse - 8 to 18 years"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-17",
+        "sic_name":"Social and behaviour change communication on violence, exploitation and abuse"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-18",
+        "sic_name":"Child protection focused on care and support for children with disabilities"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-19",
+        "sic_name":"Violence, exploitation, and abuse - surveys (e.g. KAP, VACS), data analysis\/research\/evaluation evidence generation, synthesis, and use"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-20",
+        "sic_name":"Protective services for children on the move"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-21",
+        "sic_name":"Child road traffic injuries prevention"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-22",
+        "sic_name":"Inter-sectoral coordination and collaboration on violence, exploitation and abuse"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-23",
+        "sic_name":"Child Protection humanitarian AoR\/humanitarian sector coordination"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-24",
+        "sic_name":"Violence, exploitation, and abuse - planning, co-ordination and programme monitoring"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-01",
+        "area_name":"Prevention and response services for violence against children",
+        "sic_code":"23-01-99",
+        "sic_name":"Technical assistance - Prevention and response services for violence against children"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-01",
+        "sic_name":"Services related to child marriage"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-02",
+        "sic_name":"Legal and policy framework related to child marriage"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-03",
+        "sic_name":"Social and behaviour change communication for child marriage"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-04",
+        "sic_name":"Child marriage - surveys (e.g. KAP, VACS), data analysis\/research\/evaluation evidence generation, synthesis, and use"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-05",
+        "sic_name":"Harmful practices - routine administrative data collection, household surveys and monitoring systems"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-06",
+        "sic_name":"Harmful practices - planning, co-ordination and programme monitoring"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-07",
+        "sic_name":"Services related to FGM\/C"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-08",
+        "sic_name":"Legal and policy framework related to FGM\/C"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-09",
+        "sic_name":"Social and behaviour change communication related to FGM\/C"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-10",
+        "sic_name":"FGM\/C - surveys (e.g. KAP, VACS), data analysis\/research\/evaluation evidence generation, synthesis, and use"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-98",
+        "sic_name":"Technical assistance - Child marriage"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-02",
+        "area_name":"Harmful practices (FGM\/C and child marriage)",
+        "sic_code":"23-02-99",
+        "sic_name":"Technical assistance - FGM\/C"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-03",
+        "area_name":"Access to justice",
+        "sic_code":"23-03-01",
+        "sic_name":"Promoting diversion and alternatives to deprivation of liberty"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-03",
+        "area_name":"Access to justice",
+        "sic_code":"23-03-02",
+        "sic_name":"Justice sector workforce strengthening and capacity building (including police)"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-03",
+        "area_name":"Access to justice",
+        "sic_code":"23-03-03",
+        "sic_name":"Access to child-friendly police and justice sector services"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-03",
+        "area_name":"Access to justice",
+        "sic_code":"23-03-04",
+        "sic_name":"Birth Registration\/Civil Registration and Vital Statistics systems"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-03",
+        "area_name":"Access to justice",
+        "sic_code":"23-03-05",
+        "sic_name":"Alternative care reform and service provision"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-03",
+        "area_name":"Access to justice",
+        "sic_code":"23-03-06",
+        "sic_name":"Justice, birth registration\/CRVS, and alternative care - surveys (e.g. KAP, VACS), data analysis\/research\/evaluation evidence generation, synthesis, and use"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-03",
+        "area_name":"Access to justice",
+        "sic_code":"23-03-07",
+        "sic_name":"Justice, birth registration\/CRVS, and alternative care - planning, co-ordination and programme monitoring"
+    },
+    {
+        "domain_code":"23",
+        "domain_name":"Protection from Violence and Exploitation",
+        "area_code":"23-03",
+        "area_name":"Access to justice",
+        "sic_code":"23-03-99",
+        "sic_name":"Technical assistance - Access to justice"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-01",
+        "sic_name":"WASH - Enabling environment (policies\/strategies, coordination, regulation, financing, planning-monitoring-review, sector capacity development and professionalization)"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-02",
+        "sic_name":"Water - climate resilience and environmental sustainability"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-03",
+        "sic_name":"WASH - risk informed programming including climate resilience disaster and conflict"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-04",
+        "sic_name":"Water supply - sustainability checks"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-05",
+        "sic_name":"Water supply - institutions (schools, health care facilities, ECD centres)"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-06",
+        "sic_name":"Water supply - rural communities service delivery"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-07",
+        "sic_name":"Water supply - peri-urban and urban communities service delivery"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-08",
+        "sic_name":"Water supply - safety\/quality\/treatment (including household treatment and safe storage)"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-09",
+        "sic_name":"Water supply in emergencies - improving water supply services communities"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-01",
+        "area_name":"Water",
+        "sic_code":"24-01-99",
+        "sic_name":"Technical assistance - Water"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-01",
+        "sic_name":"Hygiene - handwashing with soap in communities"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-02",
+        "sic_name":"Hygiene in emergencies - handwashing facility with soap in communities"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-03",
+        "sic_name":"Hygiene promotion activities in communities"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-04",
+        "sic_name":"Sanitation and hygiene - eliminating open defecation in rural communities"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-05",
+        "sic_name":"Sanitation - eliminating open defecation in peri-urban and urban communities"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-06",
+        "sic_name":"Sanitation - improving services in peri-urban and urban communities (except household water treatment and storage; moving up the ladder and strengthening sustainability)"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-07",
+        "sic_name":"Sanitation - improving services in rural communities (except household water treatment and storage; moving up the ladder and strengthening sustainability)"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-08",
+        "sic_name":"Sanitation and hygiene - institutions (schools, health care facilities, ECD centres) including menstrual hygiene management"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-09",
+        "sic_name":"Sanitation and hygiene - improving services in emergency communities"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-10",
+        "sic_name":"Sanitation in emergencies - improving sanitation services in communities"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-11",
+        "sic_name":"WASH humanitarian cluster\/humanitarian sector coordination"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-12",
+        "sic_name":"WASH in emergencies - institutions (schools, health care facilities, ECD centres) response including menstrual hygiene management"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-13",
+        "sic_name":"Sanitation and Hygiene - climate resilience and environmental sustainability"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-02",
+        "area_name":"Sanitation",
+        "sic_code":"24-02-99",
+        "sic_name":"Technical assistance - Sanitation"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-03",
+        "area_name":"Disaster risk reduction",
+        "sic_code":"24-03-01",
+        "sic_name":"Risk informed Programming for resilience (including policy and strategy development)"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-03",
+        "area_name":"Disaster risk reduction",
+        "sic_code":"24-03-02",
+        "sic_name":"Disaster risk reduction (including linkage to climate change)"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-03",
+        "area_name":"Disaster risk reduction",
+        "sic_code":"24-03-03",
+        "sic_name":"Risk assessment and analysis (including conflict, disaster, climate, epidemics)"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-03",
+        "area_name":"Disaster risk reduction",
+        "sic_code":"24-03-04",
+        "sic_name":"Risk management and resilience\/research\/evaluation evidence generation, synthesis, and use"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-03",
+        "area_name":"Disaster risk reduction",
+        "sic_code":"24-03-99",
+        "sic_name":"Technical assistance - Disaster risk reduction"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-04",
+        "area_name":"Children in urban settings \/ Local governance",
+        "sic_code":"24-04-01",
+        "sic_name":"Data, information, and evidence in local\/urban governance"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-04",
+        "area_name":"Children in urban settings \/ Local governance",
+        "sic_code":"24-04-02",
+        "sic_name":"Urban\/local policy, planning and budgeting"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-04",
+        "area_name":"Children in urban settings \/ Local governance",
+        "sic_code":"24-04-03",
+        "sic_name":"Urban\/local participation and accountability"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-04",
+        "area_name":"Children in urban settings \/ Local governance",
+        "sic_code":"24-04-04",
+        "sic_name":"Policy dialogue and advocacy on decentralization coordination and implementation"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-04",
+        "area_name":"Children in urban settings \/ Local governance",
+        "sic_code":"24-04-05",
+        "sic_name":"Resilience and environmental sustainability in urban\/local governance"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-04",
+        "area_name":"Children in urban settings \/ Local governance",
+        "sic_code":"24-04-99",
+        "sic_name":"Technical assistance - Children in urban settings"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-05",
+        "area_name":"Environmental sustainability",
+        "sic_code":"24-05-01",
+        "sic_name":"Air pollution monitoring and interventions"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-05",
+        "area_name":"Environmental sustainability",
+        "sic_code":"24-05-02",
+        "sic_name":"Climate change adaptation"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-05",
+        "area_name":"Environmental sustainability",
+        "sic_code":"24-05-03",
+        "sic_name":"Climate change\/environmental education, awareness and advocacy"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-05",
+        "area_name":"Environmental sustainability",
+        "sic_code":"24-05-04",
+        "sic_name":"Environmental screening\/impact assessments"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-05",
+        "area_name":"Environmental sustainability",
+        "sic_code":"24-05-05",
+        "sic_name":"Institutional strengthening\/policy support\/advocacy\/education on integration of climate change concerns"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-05",
+        "area_name":"Environmental sustainability",
+        "sic_code":"24-05-06",
+        "sic_name":"Low carbon development\/green technology"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-05",
+        "area_name":"Environmental sustainability",
+        "sic_code":"24-05-07",
+        "sic_name":"Environmental sustainability multi-thematic data\/research\/evaluation evidence generation, synthesis, and use"
+    },
+    {
+        "domain_code":"24",
+        "domain_name":"Safe and Clean Environment",
+        "area_code":"24-05",
+        "area_name":"Environmental sustainability",
+        "sic_code":"24-05-99",
+        "sic_name":"Technical assistance - Environmental sustainability"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-01",
+        "area_name":"Child poverty \/ Public finance for children",
+        "sic_code":"25-01-01",
+        "sic_name":"Child poverty measurement: support to routine national measurement of monetary and multidimensional child poverty"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-01",
+        "area_name":"Child poverty \/ Public finance for children",
+        "sic_code":"25-01-02",
+        "sic_name":"Child poverty analysis towards policy change (Profiling, mapping and identifying drivers of multi-dimensional and monetary poverty of children, modelling and simulation of policy options)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-01",
+        "area_name":"Child poverty \/ Public finance for children",
+        "sic_code":"25-01-03",
+        "sic_name":"Child poverty public advocacy (media and social media, campaigns)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-01",
+        "area_name":"Child poverty \/ Public finance for children",
+        "sic_code":"25-01-04",
+        "sic_name":"Contributing to policies reducing child poverty: Poverty reduction strategies, national development plans, engagement with ministries, parliament, international donor and financial organizations, civil society organizations)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-01",
+        "area_name":"Child poverty \/ Public finance for children",
+        "sic_code":"25-01-05",
+        "sic_name":"PF4C - improving Budget allocation"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-01",
+        "area_name":"Child poverty \/ Public finance for children",
+        "sic_code":"25-01-06",
+        "sic_name":"PF4C: Improving public expenditure effectiveness \/ efficiency"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-01",
+        "area_name":"Child poverty \/ Public finance for children",
+        "sic_code":"25-01-07",
+        "sic_name":"PF4C: Budget transparency, accountability and participation"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-01",
+        "area_name":"Child poverty \/ Public finance for children",
+        "sic_code":"25-01-08",
+        "sic_name":"PF4C - domestic revenue mobilization and access to finance for key social services"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-01",
+        "area_name":"Child poverty \/ Public finance for children",
+        "sic_code":"25-01-99",
+        "sic_name":"Technical assistance - Child poverty"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-01",
+        "sic_name":"Cash Transfers: Technical support to government cash transfer system development and expansion (design, targeting, beneficiary selection, grievance mechanism, cash delivery mechanisms like banking, mobiles, community distribution)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-02",
+        "sic_name":"Cash Transfers - social protection data management (management information system, social and beneficiary registries, M&E systems)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-03",
+        "sic_name":"Cash Transfers: Delivery of cash transfers through government system (beneficiary identification, grievance mechanisms, cash delivery mechanisms like banking, mobiles, community distribution)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-04",
+        "sic_name":"National social protection strategies: Policies, strategies, legislation and coordination (inter-ministerial, donor)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-05",
+        "sic_name":"Linking cash to other programs, information and services (information on essential family practices, livelihoods, psycho-social support, etc.)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-06",
+        "sic_name":"Social welfare workforce strengthening - Case management, referral, capacity development"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-07",
+        "sic_name":"Support to other social protection programs: Child care and early childhood development"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-08",
+        "sic_name":"Support to other social protection programs - Universal health coverage\/health insurance"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-09",
+        "sic_name":"Shock responsive social protection - Strengthening social protection system for humanitarian response (preparedness)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-10",
+        "sic_name":"Support to cash transfer delivery by government system (humanitarian context)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-11",
+        "sic_name":"Delivery of cash transfers or voucher through new and\/or parallel system (humanitarian context)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-12",
+        "sic_name":"Public finance management in social protection"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-02",
+        "area_name":"Social protection",
+        "sic_code":"25-02-99",
+        "sic_name":"Technical assistance - Social protection"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-03",
+        "area_name":"Adolescent empowerment",
+        "sic_code":"25-03-01",
+        "sic_name":"System strengthening for adolescent participation and civic engagement\u00a0(including in humanitarian settings)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-03",
+        "area_name":"Adolescent empowerment",
+        "sic_code":"25-03-02",
+        "sic_name":"Adolescents participating in or leading civic engagement initiatives (including in humanitarian settings)"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-03",
+        "area_name":"Adolescent empowerment",
+        "sic_code":"25-03-03",
+        "sic_name":"Children and adolescent participating in the planning, implementation, monitoring and evaluation of UNICEF programmes"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-03",
+        "area_name":"Adolescent empowerment",
+        "sic_code":"25-03-04",
+        "sic_name":"Development of multi-sectoral legislation\/policies\/strategies\/action plans supporting development and participation of adolescents"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-03",
+        "area_name":"Adolescent empowerment",
+        "sic_code":"25-03-05",
+        "sic_name":"Adolescent participation data\/research\/evaluation evidence generation, synthesis, and use"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-03",
+        "area_name":"Adolescent empowerment",
+        "sic_code":"25-03-99",
+        "sic_name":"Technical assistance - Adolescent empowerment"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-04",
+        "area_name":"Gender discriminatory roles and practices",
+        "sic_code":"25-04-01",
+        "sic_name":"Behavioural change communication campaigns on gender equitable roles and practices"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-04",
+        "area_name":"Gender discriminatory roles and practices",
+        "sic_code":"25-04-02",
+        "sic_name":"Curriculum and\/or training materials on gender roles and practices"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-04",
+        "area_name":"Gender discriminatory roles and practices",
+        "sic_code":"25-04-03",
+        "sic_name":"Capacity Development for frontline workers on gender equality"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-04",
+        "area_name":"Gender discriminatory roles and practices",
+        "sic_code":"25-04-04",
+        "sic_name":"Advocacy material on gender equality laws and policies"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-04",
+        "area_name":"Gender discriminatory roles and practices",
+        "sic_code":"25-04-05",
+        "sic_name":"Gender programming - multisectoral"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-04",
+        "area_name":"Gender discriminatory roles and practices",
+        "sic_code":"25-04-99",
+        "sic_name":"Technical assistance - Gender discriminatory roles and practices"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-05",
+        "area_name":"Children with disabilities",
+        "sic_code":"25-05-01",
+        "sic_name":"Construction\/remodelling\/retrofitting of infrastructure that is disability friendly\/ accessible - schools, WASH, Health, UNICEF premises, and others"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-05",
+        "area_name":"Children with disabilities",
+        "sic_code":"25-05-02",
+        "sic_name":"Data, research, M&E, and use of evidence on children with disabilities"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-05",
+        "area_name":"Children with disabilities",
+        "sic_code":"25-05-03",
+        "sic_name":"Humanitarian programmes and services inclusive of children with disabilities"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-05",
+        "area_name":"Children with disabilities",
+        "sic_code":"25-05-04",
+        "sic_name":"Provision of assistive products and devices for children with disabilities"
+    },
+    {
+        "domain_code":"25",
+        "domain_name":"Equitable Chance in Life",
+        "area_code":"25-05",
+        "area_name":"Children with disabilities",
+        "sic_code":"25-05-99",
+        "sic_name":"Technical assistance - Children with disabilities"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-01",
+        "area_name":"Cross-sectoral planning and programme reviews",
+        "sic_code":"26-01-01",
+        "sic_name":"Country programme process (including UNDAF planning and CCA)"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-01",
+        "area_name":"Cross-sectoral planning and programme reviews",
+        "sic_code":"26-01-02",
+        "sic_name":"Programme reviews (Annual, UNDAF, MTR, etc.)"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-01",
+        "area_name":"Cross-sectoral planning and programme reviews",
+        "sic_code":"26-01-03",
+        "sic_name":"Humanitarian planning and review activities (HRP, RRP, UNICEF HAC)"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-01",
+        "sic_name":"Situation Analysis or Update on women and children"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-02",
+        "sic_name":"MICS - General"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-03",
+        "sic_name":"Data architecture and use"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-04",
+        "sic_name":"Stimulating demand for and capacity to use data"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-05",
+        "sic_name":"Administrative data, registers and non-MICS household surveys and censuses"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-06",
+        "sic_name":"Analysis of data"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-07",
+        "sic_name":"Data dissemination"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-08",
+        "sic_name":"Programme monitoring"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-09",
+        "sic_name":"Field monitoring"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-02",
+        "area_name":"Cross-sectoral monitoring, data and situation analyses",
+        "sic_code":"26-02-10",
+        "sic_name":"Humanitarian needs assessment"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-03",
+        "area_name":"Cross-sectoral communication for development",
+        "sic_code":"26-03-01",
+        "sic_name":"Advocacy and partnership-building for social behaviour change"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-03",
+        "area_name":"Cross-sectoral communication for development",
+        "sic_code":"26-03-02",
+        "sic_name":"Capacity and skills development for social behaviour change"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-03",
+        "area_name":"Cross-sectoral communication for development",
+        "sic_code":"26-03-03",
+        "sic_name":"Children, adolescent and youth engagement and participation"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-03",
+        "area_name":"Cross-sectoral communication for development",
+        "sic_code":"26-03-04",
+        "sic_name":"Community engagement, participation and accountability"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-03",
+        "area_name":"Cross-sectoral communication for development",
+        "sic_code":"26-03-05",
+        "sic_name":"Innovation, multi-media content production and dissemination"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-03",
+        "area_name":"Cross-sectoral communication for development",
+        "sic_code":"26-03-06",
+        "sic_name":"Research, monitoring and evaluation and knowledge management for C4D"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-03",
+        "area_name":"Cross-sectoral communication for development",
+        "sic_code":"26-03-07",
+        "sic_name":"Strengthening C4D in Government systems including preparedness for humanitarian action"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-03",
+        "area_name":"Cross-sectoral communication for development",
+        "sic_code":"26-03-99",
+        "sic_name":"Technical assistance - Cross-sectoral communication for development"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-04",
+        "area_name":"Supply and logistics",
+        "sic_code":"26-04-01",
+        "sic_name":"CO\/RO Supply - technical assistance and collaboration in supply chain, procurement of goods and services, and logistics"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-01",
+        "sic_name":"Building evaluation capacity in UNICEF and the UN system"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-02",
+        "sic_name":"Corporate, multi country, multi region and multi outcome evaluations"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-03",
+        "sic_name":"Country Programme evaluations (including UNDAF evaluations)"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-04",
+        "sic_name":"Humanitarian evaluations"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-05",
+        "sic_name":"Evaluation innovation learning, uptake and partnerships for evaluation"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-06",
+        "sic_name":"Building global \/ regional \/ national stakeholder evaluation capacity"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-07",
+        "sic_name":"Building research capacity in UNICEF and the UN system"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-08",
+        "sic_name":"Corporate, multi country, multi region and multi outcome research"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-09",
+        "sic_name":"Humanitarian research"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-10",
+        "sic_name":"Research innovation learning, uptake and partnerships for research"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-05",
+        "area_name":"Evaluation and Research",
+        "sic_code":"26-05-11",
+        "sic_name":"Building global \/ regional \/ national stakeholder research capacity"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-01",
+        "sic_name":"Parliamentary engagement for policy advocacy"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-02",
+        "sic_name":"Innovation activities"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-03",
+        "sic_name":"Volunteer engagement"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-04",
+        "sic_name":"Leading advocate"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-05",
+        "sic_name":"Leading voice"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-06",
+        "sic_name":"Supporter engagement"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-07",
+        "sic_name":"Leading brand"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-08",
+        "sic_name":"Emergency preparedness (cross-sectoral)"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-09",
+        "sic_name":"CRC, CEDAW or CRPD - reporting"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-10",
+        "sic_name":"CRC, CEDAW or CRPD - follow up on concluding observations"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-11",
+        "sic_name":"Independent national child rights institution \/ ombudsperson"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-12",
+        "sic_name":"Learning"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-13",
+        "sic_name":"Joint programmes\/pooled funding\/inter-agency agreements"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-06",
+        "area_name":"Other cross-sectoral programme areas",
+        "sic_code":"26-06-14",
+        "sic_name":"Protection from Sexual Exploitation and Abuse"
+    },
+    {
+        "domain_code":"26",
+        "domain_name":"Cross-sectoral",
+        "area_code":"26-07",
+        "area_name":"Operations support to programme delivery",
+        "sic_code":"26-07-01",
+        "sic_name":"Operations support to programme delivery"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-01",
+        "sic_name":"HQ and RO technical support to Goal Area 1 Survive and Thrive"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-02",
+        "sic_name":"HQ and RO technical support to Goal Area 2 Learn"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-03",
+        "sic_name":"HQ and RO technical support to Goal Area 3 Protection from Violence and Exploitation"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-04",
+        "sic_name":"HQ and RO technical support to Goal Area 4 Safe and Clean Environment"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-05",
+        "sic_name":"HQ and RO technical support to Goal Area 5 Equitable Chance in Life"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-06",
+        "sic_name":"HQ and RO technical support to multiple Goal Areas"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-07",
+        "sic_name":"HQ and RO technical support on gender"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-08",
+        "sic_name":"HQ and RO technical support on monitoring"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-09",
+        "sic_name":"RO advocacy and communication"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-10",
+        "sic_name":"RO technical support to countries on Supply\/Logistics"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-11",
+        "sic_name":"HQ programme guidance"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-12",
+        "sic_name":"HQ planning and corporate reporting"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-13",
+        "sic_name":"HQ policy development and support"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-14",
+        "sic_name":"RO planning and quality assurance"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-15",
+        "sic_name":"CO programme coordination"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-16",
+        "sic_name":"CO advocacy and communication"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-17",
+        "sic_name":"Knowledge management"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-18",
+        "sic_name":"International Aid Transparency Initiative and related activities"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-01",
+        "area_name":"Technical excellence in policy and programmes",
+        "sic_code":"27-01-19",
+        "sic_name":"HQ research and support"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-02",
+        "area_name":"Technical excellence in procurement and management of supplies",
+        "sic_code":"27-02-01",
+        "sic_name":"HQ Supply - technical excellence in supply chain, procurement of goods and services, and logistics; including creating healthy markets, supply financing solutions, and sustainable national supply chain systems"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-03",
+        "area_name":"Technical excellence in humanitarian action",
+        "sic_code":"27-03-01",
+        "sic_name":"HQ support to humanitarian action"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-03",
+        "area_name":"Technical excellence in humanitarian action",
+        "sic_code":"27-03-02",
+        "sic_name":"RO support on humanitarian action to Country Offices"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-04",
+        "area_name":"Technical excellence in evaluation",
+        "sic_code":"27-04-01",
+        "sic_name":"Building evaluation capacity in UNICEF and the UN system"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-04",
+        "area_name":"Technical excellence in evaluation",
+        "sic_code":"27-04-02",
+        "sic_name":"Corporate, multi country, multi region and multi outcome evaluations"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-04",
+        "area_name":"Technical excellence in evaluation",
+        "sic_code":"27-04-03",
+        "sic_name":"Country Programme evaluations (including UNDAF evaluations)"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-04",
+        "area_name":"Technical excellence in evaluation",
+        "sic_code":"27-04-04",
+        "sic_name":"Humanitarian evaluations"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-04",
+        "area_name":"Technical excellence in evaluation",
+        "sic_code":"27-04-05",
+        "sic_name":"Evaluation innovation learning, uptake and partnerships for evaluation"
+    },
+    {
+        "domain_code":"27",
+        "domain_name":"Development Effectiveness",
+        "area_code":"27-04",
+        "area_name":"Technical excellence in evaluation",
+        "sic_code":"27-04-06",
+        "sic_name":"Building global \/ regional \/ national stakeholder evaluation capacity"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-01",
+        "area_name":"Corporate oversight and assurance",
+        "sic_code":"28-01-01",
+        "sic_name":"Evaluation capacity at HQ level"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-01",
+        "area_name":"Corporate oversight and assurance",
+        "sic_code":"28-01-02",
+        "sic_name":"Audit, assurance and investigation capacity at HQ level"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-01",
+        "area_name":"Corporate oversight and assurance",
+        "sic_code":"28-01-03",
+        "sic_name":"Protection from Sexual Exploitation and Abuse"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-02",
+        "area_name":"Corporate financial, information and communication technology and administrative management",
+        "sic_code":"28-02-01",
+        "sic_name":"Financial and administrative management capacity at HQ level"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-02",
+        "area_name":"Corporate financial, information and communication technology and administrative management",
+        "sic_code":"28-02-02",
+        "sic_name":"ICTD capacity for global action"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-03",
+        "area_name":"Corporate external relations and partnerships, communication and resource mobilization",
+        "sic_code":"28-03-01",
+        "sic_name":"Leading advocate at HQ"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-03",
+        "area_name":"Corporate external relations and partnerships, communication and resource mobilization",
+        "sic_code":"28-03-02",
+        "sic_name":"Leading voice at HQ"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-03",
+        "area_name":"Corporate external relations and partnerships, communication and resource mobilization",
+        "sic_code":"28-03-03",
+        "sic_name":"Supporter engagement at HQ"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-03",
+        "area_name":"Corporate external relations and partnerships, communication and resource mobilization",
+        "sic_code":"28-03-04",
+        "sic_name":"Leading brand at HQ"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-03",
+        "area_name":"Corporate external relations and partnerships, communication and resource mobilization",
+        "sic_code":"28-03-05",
+        "sic_name":"Management of advocacy and communication at HQ"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-03",
+        "area_name":"Corporate external relations and partnerships, communication and resource mobilization",
+        "sic_code":"28-03-06",
+        "sic_name":"Public partnerships capacity at HQ"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-03",
+        "area_name":"Corporate external relations and partnerships, communication and resource mobilization",
+        "sic_code":"28-03-07",
+        "sic_name":"Private sector fund raising management capacity at HQ"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-03",
+        "area_name":"Corporate external relations and partnerships, communication and resource mobilization",
+        "sic_code":"28-03-08",
+        "sic_name":"Executive Board secretariat"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-04",
+        "area_name":"Corporate human resources management",
+        "sic_code":"28-04-01",
+        "sic_name":"Human resources management capacity at HQ"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-05",
+        "area_name":"Leadership and corporate direction",
+        "sic_code":"28-05-01",
+        "sic_name":"Executive Leadership (OED)"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-05",
+        "area_name":"Leadership and corporate direction",
+        "sic_code":"28-05-02",
+        "sic_name":"Office of Legal Affairs"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-05",
+        "area_name":"Leadership and corporate direction",
+        "sic_code":"28-05-03",
+        "sic_name":"Ethics in UNICEF"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-06",
+        "area_name":"Staff and premises security",
+        "sic_code":"28-06-01",
+        "sic_name":"HQ advisory support on safety and security"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-07",
+        "area_name":"Field\/country office oversight, management and operations support",
+        "sic_code":"28-07-01",
+        "sic_name":"Regional Direction and leadership"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-07",
+        "area_name":"Field\/country office oversight, management and operations support",
+        "sic_code":"28-07-02",
+        "sic_name":"Management and Operations support from RO"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-07",
+        "area_name":"Field\/country office oversight, management and operations support",
+        "sic_code":"28-07-03",
+        "sic_name":"Country office leadership and direction"
+    },
+    {
+        "domain_code":"28",
+        "domain_name":"Management",
+        "area_code":"28-07",
+        "area_name":"Field\/country office oversight, management and operations support",
+        "sic_code":"28-07-04",
+        "sic_name":"Management and Operations support at CO"
+    },
+    {
+        "domain_code":"29",
+        "domain_name":"UN Coordination",
+        "area_code":"29-01",
+        "area_name":"United Nations coherence and cluster coordination",
+        "sic_code":"29-01-01",
+        "sic_name":"HQ support to humanitarian cluster coordination and RC system"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-01",
+        "sic_name":"Pledge campaign acquisition"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-02",
+        "sic_name":"Pledge campaign houselist"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-03",
+        "sic_name":"Legacies campaign"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-04",
+        "sic_name":"Cash campaign acquisition"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-05",
+        "sic_name":"Cash campaign houselist"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-06",
+        "sic_name":"Mid-level Donors campaign"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-07",
+        "sic_name":"Major Donors campaign"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-08",
+        "sic_name":"Foundations\/Trusts campaign"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-09",
+        "sic_name":"Membership based organizations campaign"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-10",
+        "sic_name":"Priority integrated partnerships campaign"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-11",
+        "sic_name":"Corporate Donors >100k"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-12",
+        "sic_name":"Corporate Donors <100k"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-13",
+        "sic_name":"CO\/RSC other non-staff indirect"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-01",
+        "area_name":"PSFR modalities non-post",
+        "sic_code":"30-01-14",
+        "sic_name":"HQ private sector activities (non-post)"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-01",
+        "sic_name":"Legacies - Staff"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-02",
+        "sic_name":"Cash - Staff"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-03",
+        "sic_name":"Mid-level Donors - Staff"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-04",
+        "sic_name":"Major Donors - Staff"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-05",
+        "sic_name":"Foundations\/Trusts - Staff"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-06",
+        "sic_name":"Membership based organizations - Staff"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-07",
+        "sic_name":"Business - Staff"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-08",
+        "sic_name":"Pledge - Staff"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-09",
+        "sic_name":"CO\/RSC staff not attributable to one channel"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-02",
+        "area_name":"PSFR Technical assistance",
+        "sic_code":"30-02-10",
+        "sic_name":"HQ private sector activities (post)"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-03",
+        "area_name":"Private Sector Engagement",
+        "sic_code":"30-03-01",
+        "sic_name":"Child rights and businesses"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-03",
+        "area_name":"Private Sector Engagement",
+        "sic_code":"30-03-02",
+        "sic_name":"Private sector advocacy"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-03",
+        "area_name":"Private Sector Engagement",
+        "sic_code":"30-03-03",
+        "sic_name":"Private sector partnerships"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-04",
+        "area_name":"Procurement services",
+        "sic_code":"30-04-01",
+        "sic_name":"Procurement services for Governments, UN and other organizations"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-05",
+        "area_name":"Capital investments",
+        "sic_code":"30-05-01",
+        "sic_name":"Office compliance with UN SMS, SRM and implementation of Security Risk Mitigating Measures (MOSS)"
+    },
+    {
+        "domain_code":"30",
+        "domain_name":"Special Purpose",
+        "area_code":"30-05",
+        "area_name":"Capital investments",
+        "sic_code":"30-05-02",
+        "sic_name":"Investment in technology, innovations and knowledge tools"
+    }
+]
