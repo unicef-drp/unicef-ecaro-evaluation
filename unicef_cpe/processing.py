@@ -11,10 +11,10 @@ from unicef_cpe.config import RAW_DATA_DIR, FIXED_DATA_DIR
 from .utils import get_ecaro_countries_mapping, read_and_combine_sheets
 
 
-def make_df_start_from_row_labels(df: pd.DataFrame):
+def make_df_start_from_row_labels(df: pd.DataFrame, starting_label = "Row Labels"):
     df = df.copy()
-    if df.columns[0] != "Row Labels":
-        row_labels_index = df[df.iloc[:, 0] == "Row Labels"].index[0]
+    if df.columns[0] != starting_label:
+        row_labels_index = df[df.iloc[:, 0] == starting_label].index[0]
         # Set that row as the new column names
         column_names = df.iloc[row_labels_index].apply(
             lambda x: str(int(x)) if isinstance(x, float) and x.is_integer() else str(x)

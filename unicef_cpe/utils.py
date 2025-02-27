@@ -1,13 +1,14 @@
 """
 Miscellaneous utility functions.
 """
-
+import glob
 import json
 from importlib import resources
 from textwrap import wrap
 from typing import Literal
 from pathlib import Path
 import re
+import os
 import pandas as pd
 
 FIELD = Literal["iso", "name", "code"]
@@ -287,4 +288,34 @@ def remove_section_title(markdown_text: str, h_title='###') -> str:
     
     return result
 
+
+def generate_output_excel(proj_root, country):
+    # Find all processed Excel files dynamically
+    data_path = proj_root / f"data/processed/{country}/"
+    output_path = proj_root / f"data/outputs/{country}/cpe_evaluation_data.xlsx"
+    processed_files = glob.glob(os.path.join(data_path, "*.xlsx"))
+
+    if not processed_files:
+        raise ValueError(f"No processed Excel files found in {data_path}")
+
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)  # Create missing directories
+
+    # Create a new Excel writer
+    with pd.ExcelWriter(output_path) as writer:
+        for file in processed_files:
+            try:
+                # Extract sheet name from filename
+                sheet_name = os.path.splitext(os.path.basename(file))[0]
+                
+                # Read the Excel file (handle multiple sheets if necessary)
+                excel_data = pd.ExcelFile(file)
+                for sheet in excel_data.sheet_names:
+                    df = excel_data.parse(sheet)
+                    writer.sheets[f"{sheet_name}"] = df
+                    df.to_excel(writer, sheet_name=f"{sheet_name}", index=False)
+            except Exception as e:
+                print(f"Error processing {file}: {e}")
+
+    print(f"Final combined output saved as {output_path}")
 

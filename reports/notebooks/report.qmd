@@ -35,23 +35,17 @@ from IPython.display import Markdown, display
 
 import unicef_cpe 
 from unicef_cpe.plotting import MODEBAR_CONFIG, go, PALLETE_QUALITATIVE, legend_style, goal_area_colors, px, make_subplots
-from unicef_cpe.config import OUTPUT_DATA_DIR, DATA_DIR
+from unicef_cpe.config import DATA_DIR, OUTPUT_DATA_DIR
 from IPython.display import display, HTML
 
-
 # settings
-PATH_DATA = OUTPUT_DATA_DIR
-PATH_DATASET = PATH_DATA.joinpath('unicef-ecaro-cpe-dataset.xlsx')
+PATH_DATASET = OUTPUT_DATA_DIR / COUNTRY /'cpe_evaluation_data.xlsx'
 RENDERER = None
 
 # datasets
 xlsx = pd.ExcelFile(PATH_DATASET)
 dataset = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
-
-
-df_social_post = pd.read_parquet(OUTPUT_DATA_DIR / f'classifed-authored-social-post-all.parquet')
-mask = df_social_post['country'].eq(COUNTRY)
-df_social_post = df_social_post[mask].copy()
+social_post_dataset = {}
 ```
 
 ```{python}
@@ -64,36 +58,36 @@ def format_as_list(items: list, max_items: int = 10, sort: bool = True) -> str:
 
 ## Context
 
-::: {.callout-note}
-Below is an AI-generated summary of the country's context and situation of children from 2016-2023 Country Office Annual Reports (COARs).
-:::
 
 ::: {.panel-tabset}
 
 #### Overview
 
+::: {.callout-note}
+Below is an AI-generated summary of the country's context and situation of children from 2018-2023 Country Office Annual Reports (COARs).
+:::
+
 ```{python}
-
-context_path = OUTPUT_DATA_DIR.joinpath('coar_context_summaries.xlsx')
-df_context = pd.read_excel(context_path, sheet_name='context_overall')
-mask = df_context['country_code'].eq(COUNTRY)
-summary = df_context.loc[mask, 'context'].item().replace('# ', '')
-print(summary)
+df_context = dataset.get('coar_context_summaries_context_overall')
+if df_context is not None and df_context.empty is False:
+  summary = df_context['context'].values[0].replace('# ', '')
+  print(summary)
 ```
-
 
 #### Year-by-Year Highlights
 
-```{python}
-
-context_path = OUTPUT_DATA_DIR.joinpath('coar_context_summaries.xlsx')
-df_context = pd.read_excel(context_path, sheet_name='context_by_year')
-mask = df_context['country_code'].eq(COUNTRY)
-summary = '\n\n'.join([context[1] for context in df_context.loc[mask, 'context'].items()])
-print(summary)
-```
+::: {.callout-note}
+Below is an AI-generated summary, **year by year** of the country's context and situation of children from 2018-2023 Country Office Annual Reports (COARs).
 :::
 
+```{python}
+df_context = dataset.get('coar_context_summaries_context_by_year')
+if df_context is not None and df_context.empty is False:
+  summary = '\n\n'.join([context for context in df_context['context']])
+  print(summary)
+```
+
+:::
 
 ## Relevance
 
@@ -104,25 +98,24 @@ _To what extent has UNICEF responded to the (changing) needs of the most vulnera
 #### Identified needs categorized by goal areas
 
 ::: {.callout-note}
-Below is an AI-generated list of identified needs extracted from the 2016-2023 Country Office Annual Reports (COARs) categorized the needs by goal areas.
+Below is an AI-generated list of identified needs extracted from the 2018-2023 Country Office Annual Reports (COARs) categorized the needs by goal areas.
 :::
 
 ```{python}
-#| fig-cap: "Source: [Needs by Goal Area](/data/outputs/coar_needs_by_goal_area.xlsx) [@evidence_of_innovations]"
-needs_path = OUTPUT_DATA_DIR.joinpath('coar_needs_by_goal_area.xlsx')
+#| fig-cap: "Source: [Coar Needs by Goal Area](/cpe_evaluation_data.xlsx)"
 
-df_timeline = pd.read_excel(needs_path)
-
-mask = df_timeline['country_code'].eq(COUNTRY)
-
-df_timeline = df_timeline[mask].copy()
-fig = unicef_cpe.plotting.plot_stacked_bar_chart(df_timeline, stack_by='goal_area', count_of = 'need')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df_timeline = dataset.get('coar_needs_by_goal_area')
+if df_timeline is not None and df_timeline.empty is False:
+  fig = unicef_cpe.plotting.plot_stacked_bar_chart(df_timeline, stack_by='goal_area', count_of = 'need')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
+
 ```{python}
-dynamic_content = unicef_cpe.plotting.generate_timeline_from_df(df_timeline)
-display(HTML(dynamic_content))
+#| fig-cap: "Source: [Coar Needs by Goal Area](/cpe_evaluation_data.xlsx)"
+if df_timeline is not None and df_timeline.empty is False:
+  dynamic_content = unicef_cpe.plotting.generate_timeline_from_df(df_timeline)
+  display(HTML(dynamic_content))
 ```
 
 #### Programme Structure
@@ -132,59 +125,34 @@ Outlined below are the Country Office Outcomes and Outputs derived from the **In
 **Note**: In some instances, the **Output description** may be unavailable in the **InSight Programme Structure**, as certain **Outputs** may have been **added after the CPD was finalized**.
 :::
 
-::: {.panel-tabset}
-
-```{python}
-needs_path = OUTPUT_DATA_DIR.joinpath('programme_structure.xlsx')
-
-df_wp = pd.read_excel(needs_path)
-
-mask = df_wp['country_code'].eq(COUNTRY)
-df_wp = df_wp[mask].copy()
-records = df_wp['CP'].unique()
-text = ''
-for record in records:
-  print('#### {}'.format(record))
-  mask = df_wp['CP'] == record
-  text = unicef_cpe.plotting.generate_programme_markdown(df_wp[mask])
-  print(text)
-```
-
-```{python}
-df = dataset['CPD Priorities']
-mask = df['country'].eq(COUNTRY)
-records = df.loc[mask].groupby('period', as_index=False).agg({'priority': list, 'summary': list}).to_dict(orient='records')
-text = ''
-for record in records:
-  print('#### {} CPD'.format(record['period']))
-
-  text = ''
-  for priority, summary in zip(record['priority'], record['summary']):
-    text += f'*{priority}*\n\n{summary}\n\n'
-  print(text)
-```
-
-:::
-
-:::
-
-
-### 1. To what extent UNICEF positioning in the country and implementation strategies enable itself to respond to those needs?
-
 ```{python}
 #| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-activities_path = OUTPUT_DATA_DIR.joinpath('activities_programme_stucture.xlsx')
+df_wp = dataset.get('programme_structure')
+if df_wp is not None:
+  records = df_wp['CP'].unique()
+  text = ''
+  for record in records:
+    print('#### {}'.format(record))
+    mask = df_wp['CP'] == record
+    text = unicef_cpe.plotting.generate_programme_markdown(df_wp[mask])
+    print(text)
 
-df_activities = pd.read_excel(activities_path)
-mask = df_activities['country'].eq(COUNTRY)
-df_activities = df_activities[mask].copy()
-# Load the data
-df_activities = df_activities[~pd.isnull(df_activities['cp'])]
+df_cpd = dataset.get('cpd_priorities')
+if df_cpd is not None:
+  records = df_cpd.groupby('period', as_index=False).agg({'priority': list, 'summary': list}).to_dict(orient='records')
+  text = ''
+  for record in records:
+    print('#### {} CPD'.format(record['period']))
 
-# Sort the available years in ascending order
-available_cp = df_activities['cp'].unique()
+    text = ''
+    for priority, summary in zip(record['priority'], record['summary']):
+      text += f'*{priority}*\n\n{summary}\n\n'
+    print(text)
 ```
+
+:::
+
+### 1. To what extent UNICEF positioning in the country and implementation strategies enable itself to respond to those needs?
 
 ::: {.panel-tabset}
 
@@ -192,396 +160,66 @@ available_cp = df_activities['cp'].unique()
 
 ```{python}
 #| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-for cp in df_activities[mask]['cp'].unique():
-  display(Markdown(f'##### {cp}'))
-  mask1 = df_activities['cp'] == cp
-  fig = unicef_cpe.plotting.create_bubble_chart(df_activities[mask&mask1], group_by='goal_area', x_axis='expenditure',y_axis='activity_name', frame ='cp')
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx) @funds_utilization_cube @programme_structure"
 
-  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  df_activities = df_activities[~pd.isnull(df_activities['cp'])]
+
+  for cp in df_activities['cp'].unique():
+    display(Markdown(f'##### {cp}'))
+    mask1 = df_activities['cp'] == cp
+    fig = unicef_cpe.plotting.create_bubble_chart(df_activities[mask1], group_by='goal_area', x_axis='expenditure',y_axis='activity_name', frame ='cp')
+
+    fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### Strategy Overview
 
 ```{python}
 #| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx) @funds_utilization_cube @programme_structure"
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  df_activities = df_activities[~pd.isnull(df_activities['cp'])]
 
-for cp in df_activities[mask]['cp'].unique():
-  display(Markdown(f'##### {cp}'))
-  mask1 = df_activities['cp'] == cp
-
-  fig = unicef_cpe.plotting.create_bubble_chart(df_activities[mask&mask1], group_by='strategy_name', x_axis='expenditure',y_axis='activity_name', frame ='cp')
-
-
-
-
-  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-
-```{python}
-
-  df_activities['strategy_mapped'] = df_activities.apply(lambda row: row['strategy_name'] if row['strategy_name'] =='Operational support to programme delivery' else row['strategy_mapped'], 1)
-
-  df_grouped = df_activities.groupby(['year', 'strategy_mapped'])['expenditure'].sum().reset_index()
-
-
-  # Create the stacked bar chart using Plotly Express
-  fig = px.bar(
-      df_grouped,
-      x="year",
-      y="expenditure",
-      color="strategy_mapped",
-      title="Total Expenditures by Mapped Strategy Across Years",
-      labels={"year": "Year", "expenditure": "Total Expenditure", "strategy_name": "Strategy"},
-      color_discrete_map=goal_area_colors,  # Apply the custom color mapping
-      barmode="stack",
-  )
-fig.update_layout(
-    legend= legend_style,
-    legend_title_text="")
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-html_filename = OUTPUT_DATA_DIR/f'stacked_chart.html'
-pio.write_html(fig, file=html_filename)
-print(f"Chart saved as {html_filename}")
-```
-```{python}
-import plotly.io as pio
-for cp in df_activities[mask]['cp'].unique():
+  for cp in df_activities['cp'].unique():
     display(Markdown(f'##### {cp}'))
     mask1 = df_activities['cp'] == cp
 
-    fig = unicef_cpe.plotting.create_bubble_chart(df_activities[mask & mask1], 
-                                                  group_by='strategy_name', 
-                                                  x_axis='expenditure',
-                                                  y_axis='activity_name', 
-                                                  frame='cp')
-
-    # Save the figure as an HTML file
-    html_filename = OUTPUT_DATA_DIR/f'bubble_chart_{cp}.html'
-    pio.write_html(fig, file=html_filename)
-    print(f"Chart saved as {html_filename}")
+    fig = unicef_cpe.plotting.create_bubble_chart(df_activities[mask1], group_by='strategy_name', x_axis='expenditure',y_axis='activity_name', frame ='cp')
+    fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
-#### Goal - Strategy Overview 
-
-::: {.panel-tabset}
-
-#### By Activity
+#### Goal - Strategy Expenditures Overview 
 
 ```{python}
 #| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-
-sankey_figures = {}
-for cp in available_cp:
-    mask = df_activities['cp'].eq(cp)
-    sankey_figures[cp] = unicef_cpe.plotting.plot_sankey(df_activities[mask], source_node='goal_area', target_node='strategy_name', aggregation_method='activity_count')
-
-fig = unicef_cpe.plotting.add_drop_dow(sankey_figures, available_cp)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-
-```
-
-#### By Expenditure
-
-```{python}
-#| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-
-sankey_figures = {}
-for cp in available_cp:
-    mask = df_activities['cp'].eq(cp)
-    sankey_figures[cp] = unicef_cpe.plotting.plot_sankey(df_activities[mask], source_node='goal_area', target_node='strategy_name', aggregation_method='utilized_sum')
-
-fig = unicef_cpe.plotting.add_drop_dow(sankey_figures, available_cp)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-
-```
-
-```{python}
-
-sankey_figures = {}
-for cp in available_cp:
-    mask = df_activities['cp'].eq(cp)
-    fig = unicef_cpe.plotting.plot_sankey(df_activities[mask], source_node='goal_area', target_node='strategy_name', aggregation_method='utilized_sum')
-    print(cp)
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx) @funds_utilization_cube @programme_structure"
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  for cp in df_activities['cp'].unique():
+    display(Markdown(f'##### {cp}'))
+    cp_mask = df_activities['cp'].eq(cp)
+    fig = unicef_cpe.plotting.plot_sankey(df_activities[cp_mask], source_node='goal_area', target_node='strategy_name', aggregation_method='utilized_sum')
     fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 
-    # html_filename = OUTPUT_DATA_DIR/f'sankey_chart_{cp}.html'
-    # pio.write_html(fig, file=html_filename)
-    # print(f"Chart saved as {html_filename}")
 ```
 
-
-:::
-
-#### Goal Area - Result Overview
-
-::: {.panel-tabset}
-
-#### By Activity
+#### Goal Area - Result Expenditures Overview
 
 ```{python}
 #| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-sankey_figures = {}
-for cp in available_cp:
-    mask = df_activities['cp'] == cp
-    sankey_figures[cp] = unicef_cpe.plotting.plot_sankey(df_activities[mask], source_node='goal_area', target_node='result_area', aggregation_method='activity_count')
-
-fig = unicef_cpe.plotting.add_drop_dow(sankey_figures, available_cp)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx) @funds_utilization_cube @programme_structure"
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  for cp in df_activities['cp'].unique():
+    display(Markdown(f'##### {cp}'))
+    cp_mask = df_activities['cp'].eq(cp)
+    fig = unicef_cpe.plotting.plot_sankey(df_activities[cp_mask], source_node='goal_area', target_node='result_area', aggregation_method='utilized_sum')
+    fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
-#### By Expenditure
-
-```{python}
-#| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-sankey_figures = {}
-for cp in available_cp:
-    mask = df_activities['cp'] == cp
-    sankey_figures[cp] = unicef_cpe.plotting.plot_sankey(df_activities[mask], source_node='goal_area', target_node='result_area', aggregation_method='utilized_sum')
-
-fig = unicef_cpe.plotting.add_drop_dow(sankey_figures, available_cp)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-:::
-#### Social Media 
-
-::: {.callout-note}
-Social media data was collected by scraping a predefined list of profiles belonging to UNICEF and its stakeholders. The posts were then categorized using artificial intelligence to identify relevant themes and goal areas.
-:::
-
-::: {.panel-tabset}
-
-#### UNICEF Posts by Goal Area
-```{python}
-#| fig-cap: "Source: [Social Media Posts](/data/outputs/social-media-posts) [@social_media]"
-
-unicef_posts = df_social_post[df_social_post['post_by_unicef'] == True].copy()
-
-# Explode the 'label' column to have one goal area per row
-unicef_posts = unicef_posts.explode('label')
-
-# Group by year and goal area to get post counts
-unicef_goal_area = unicef_posts.groupby(['year', 'label']).size().reset_index(name='post_count')
-
-# Plotting with custom colors
-fig = px.bar(
-    unicef_goal_area,
-    x='year',
-    y='post_count',
-    color='label',
-    labels={'post_count': 'Mentions by Goal Area', 'year': 'Year', 'label': 'Goal Area'},
-    barmode='stack',
-    color_discrete_map= goal_area_colors  # Use your custom color mapping
-)
-
-fig.update_layout(
-    xaxis=dict(type='category'),
-    legend_title_text='',
-    legend=legend_style,
-)
-
-
-# Filter UNICEF posts
-unicef_posts = df_social_post[df_social_post['post_by_unicef'] == True].copy()
-
-# Calculate total posts per year (before exploding)
-total_posts_per_year = unicef_posts.groupby('year').size().reset_index(name='total_posts')
-
-# Explode the 'label' column to have one goal area per row
-unicef_posts_exploded = unicef_posts.explode('label')
-
-# Group by year and goal area to get mentions
-unicef_goal_area = unicef_posts_exploded.groupby(['year', 'label']).size().reset_index(name='mention_count')
-
-# Merge with total posts per year
-unicef_goal_area = unicef_goal_area.merge(total_posts_per_year, on='year')
-
-# Calculate share by goal area (mentions over total original posts)
-unicef_goal_area['share'] = unicef_goal_area['mention_count'] / unicef_goal_area['total_posts']
-
-# Create the area chart
-fig_share = px.area(
-    unicef_goal_area,
-    x='year',
-    y='share',
-    color='label',
-    title='Share of Goal Area Mentions in UNICEF Posts Over Time',
-    labels={'share': 'Share of Mentions', 'year': 'Year', 'label': 'Goal Area'},
-    color_discrete_map=unicef_cpe.plotting.goal_area_colors  # Use your custom color mapping
-)
-
-fig_share.update_layout(
-    xaxis=dict(type='category'),
-    yaxis=dict(tickformat=".0%"),
-    legend_title_text='',
-    legend=legend_style,
-)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-fig_share.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-
-#### Engagement By Goal Area
-```{python}
-#| fig-cap: "Source: [Social Media Posts](/data/outputs/social-media-posts) [@social_media]"
-
-df_exploded = df_social_post.explode('label').copy()
-
-# Group by year, goal area, and whether the post is by UNICEF
-engagement_data = df_exploded.groupby(['year', 'label', 'post_by_unicef'])['engagement'].mean().reset_index()
-
-# Map boolean to strings for clarity
-engagement_data['poster'] = engagement_data['post_by_unicef'].map({True: 'UNICEF', False: 'Stakeholders'})
-
-
-unicef_posts = engagement_data[engagement_data['post_by_unicef'] == True].copy()
-non_unicef_posts = engagement_data[engagement_data['post_by_unicef'] == False].copy()
-
-# Plot stacked area chart for UNICEF posts
-fig_unicef = px.area(
-    unicef_posts,
-    title='Engagement on UNICEF Posts',
-    x='year',
-    y='engagement',
-    color='label',
-    labels={'engagement': 'Engagement of Posts'},
-    color_discrete_map = goal_area_colors
-)
-fig_unicef.update_layout(
-    legend= legend_style,
-    legend_title_text="")
-
-# Plot stacked area chart for non-UNICEF posts
-fig_non_unicef = px.area(
-    non_unicef_posts,
-    title="Engagement on UNICEF's Stakeholders Posts",
-    x='year',
-    y='engagement',
-    color='label',
-    labels={'engagement': 'Engagement of Posts'},
-    color_discrete_map = goal_area_colors
-)
-fig_non_unicef.update_layout(
- 
-    legend= legend_style,
-    legend_title_text="")
-
-# Show both charts
-
-fig_unicef.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-fig_non_unicef.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-
-#### UNICEF Mentions by Goal Area
-
-```{python}
-#| fig-cap: "Source: [Social Media Posts](/data/outputs/social-media-posts) [@social_media]"
-
-# Filter stakeholder posts that mention UNICEF
-stakeholder_mentions = df_social_post[
-    (df_social_post['post_by_unicef'] == False) &
-    (df_social_post['contains_unicef_occurrence'] == True)
-].copy()
-
-# Explode the 'label' column
-stakeholder_mentions = stakeholder_mentions.explode('label')
-
-# Group by year and goal area
-mentions_data = stakeholder_mentions.groupby(['year', 'label']).size().reset_index(name='mention_count')
-
-# Plotting
-fig = px.bar(
-    mentions_data,
-    x='year',
-    y='mention_count',
-    color='label',
-    title='Mentions of UNICEF by Stakeholders Over Time',
-    labels={'mention_count': 'Number of Mentions', 'year': 'Year', 'label': 'Goal Area'},
-    barmode='stack',
-    color_discrete_map = unicef_cpe.plotting.goal_area_colors
-)
-
-fig.update_layout(xaxis=dict(type='category'),
-    legend_title_text='',
-    legend=legend_style,
-                  )
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-#### Partner Types and Their Focus Areas Compared to UNICEF
-```{python}
-#| panel: tabset
-#| fig-cap: "Source: [Social Media GA Mention Share](/data/outputs/social-media-GA-mention-share-by-patrner-type.xlsx)"
-
-
-# Explode the 'label' column
-df_social_post_share = pd.read_excel(OUTPUT_DATA_DIR / f'social-media-GA-mention-share-by-patrner-type.xlsx')
-mask = df_social_post_share['country'].eq(COUNTRY)
-df_social_post_share = df_social_post_share[mask].copy()
-
-# Select GA columns
-ga_columns = [
-    'GA1: Survive and Thrive', 'GA2: Learn', 'GA3: Protection from Violence and Exploitation',
-    'GA4: Safe and Clean Environment', 'GA5: Equitable Chance in Life',
-    'GA6: Cross Sectoral', 'GA7: Development Effectiveness', 'GA8: Management',
-    'GA9: UN Coordination'
-]
-
-average_shares = df_social_post_share.groupby('partner_type')[[
-    f'share_{ga}' for ga in ga_columns
-]].mean().reset_index()
-
-# Melt the DataFrame to reshape it for the radar chart
-radar_data = average_shares.melt(
-    id_vars='partner_type',
-    var_name='Goal Area',
-    value_name='Average Share'
-)
-
-# Replace the 'share_' prefix for cleaner labels
-radar_data['Goal Area'] = radar_data['Goal Area'].str.replace('share_', '')
-
-# Create the radar chart
-fig = px.line_polar(
-    radar_data,
-    r='Average Share',
-    theta='Goal Area',
-    color='partner_type',
-    title='Average Share of Goal Areas by Partner Type',
-    line_close=True,
-    labels={'Average Share': 'Average Share', 'Goal Area': 'Goal Area', 'partner_type': 'Partner Type'}
-)
-
-# Update layout for better readability
-fig.update_layout(
-    polar=dict(
-        radialaxis=dict(tickformat=".0%", showgrid=True)
-    ),
-    legend_title_text='',
-    legend=legend_style,
-)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-:::
-
-:::
-
-::: {.panel-tabset}
 
 #### Gender Marker
 
@@ -591,68 +229,51 @@ fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 
 ```{python}
 #| label: fig-gender-marker-funds
-#| fig-cap: "Source: [Tags and Markers](/data/outputs/gender_disability_tags.xlsx) [@tags_and_markers]"
+#| fig-cap: "Source: [Gender Marker](/cpe_evaluation_data.xlsx) @programme_structure"
 
-PATH_TAG = OUTPUT_DATA_DIR.joinpath('gender_disability_tags.xlsx')
-xlsx = pd.ExcelFile(PATH_TAG)
-dataset_tags = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
-
-df = dataset_tags['gender_marker'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_tags(
-  df=df, 
-  label='Gender Marker',
-  y_title ='Expenditures (%)')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df = dataset.get('gender_marker')
+if df is not None:
+  fig = unicef_cpe.plotting.plot_tags(
+    df=df, 
+    label='Gender Marker',
+    y_title ='Expenditures (%)')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### By Output
 
 ```{python}
 #| label: fig-gender-marker-count
-#| fig-cap: "Source: [Tags and Markers](/data/outputs/gender_disability_tags.xlsx) [@tags_and_markers]"
+#| fig-cap: "Source: [Gender Marker Count](/cpe_evaluation_data.xlsx) @programme_structure"
 
-PATH_TAG = OUTPUT_DATA_DIR.joinpath('gender_disability_tags.xlsx')
-xlsx = pd.ExcelFile(PATH_TAG)
-dataset_tags = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
-
-df = dataset_tags['gender_marker_count'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_tags(
-  df=df, 
-  label='Gender Marker',
-  y_title ='Output Count')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df = dataset.get('gender_marker_count')
+if df is not None:
+  fig = unicef_cpe.plotting.plot_tags(
+    df=df, 
+    label='Gender Marker',
+    y_title ='Output Count')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
-
 
 #### Evidence of Gender Activities Overview
 
 ```{python}
-#| fig-cap: "Source: [Evidence of Innovations](/data/outputs/evidence_of_gender_activity.xlsx) [@evidence_of_innovations]"
-data_path = OUTPUT_DATA_DIR.joinpath('evidence_of_gender_activity.xlsx')
-sheet_name = 'textual_evidence'
-
-df_timeline = pd.read_excel(data_path, sheet_name=sheet_name)
-
-mask = df_timeline['country_code'].eq(COUNTRY)
-
-df_timeline = df_timeline[mask].copy()
-fig = unicef_cpe.plotting.plot_timeline_description_bar_chart(df_timeline, title_col='gender_activity_title', text_col='gender_activity_text')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+#| fig-cap: "Source: [Evidence of Gender Activity](/cpe_evaluation_data.xlsx) [@summary_narrative_analysis]"
+df_timeline = dataset.get('evidence_of_gender_activity')
+if df_timeline is not None:
+  fig = unicef_cpe.plotting.plot_timeline_description_bar_chart(df_timeline, title_col='gender_activity_title', text_col='gender_activity_text')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### Evidence of Gender Activities Highlight
 
 ```{python}
-dynamic_content = unicef_cpe.plotting.generate_timeline_markdown(df_timeline, itermediate_title='gender_activity_title', description='gender_activity_text')
-print(dynamic_content)
+#| fig-cap: "Source: [Evidence of Gender Activity](/cpe_evaluation_data.xlsx) [@summary_narrative_analysis]"
+df_timeline = dataset.get('evidence_of_gender_activity')
+if df_timeline is not None:
+  dynamic_content = unicef_cpe.plotting.generate_timeline_markdown(df_timeline, itermediate_title='gender_activity_title', description='gender_activity_text')
+  print(dynamic_content)
 ```
-
 
 :::
 
@@ -664,34 +285,31 @@ print(dynamic_content)
 
 ```{python}
 #| label: fig-humanitarian-marker-funds
-#| fig-cap: "Source: [Tags and Markers](/data/outputs/gender_disability_tags.xlsx) [@tags_and_markers]"
+#| fig-cap: "Source: [Humanitarian Marker](/cpe_evaluation_data.xlsx) @programme_structure"
 
-df = dataset_tags['humanitarian_marker'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_tags(
-  df=df, 
-  label='Humanitarian Marker',
-  y_title ='Expenditures (%)')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df = dataset.get('humanitarian_marker')
+if df is not None:
+  fig = unicef_cpe.plotting.plot_tags(
+    df=df, 
+    label='Humanitarian Marker',
+    y_title ='Expenditures (%)')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### By Output
 
 ```{python}
 #| label: fig-humanitarian-marker-count
-#| fig-cap: "Source: [Tags and Markers](/data/outputs/gender_disability_tags.xlsx) [@tags_and_markers]"
+#| fig-cap: "Source: [Humanitarian Marker Count](/cpe_evaluation_data.xlsx) @programme_structure"
 
-df = dataset_tags['humanitarian_marker_count'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
+df = dataset.get('humanitarian_marker_count')
+if df is not None:
 
-fig = unicef_cpe.plotting.plot_tags(
-  df=df, 
-  label='Humanitarian Marker',
-  y_title ='Output Count')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig = unicef_cpe.plotting.plot_tags(
+    df=df, 
+    label='Humanitarian Marker',
+    y_title ='Output Count')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 :::
@@ -704,17 +322,16 @@ fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 
 ```{python}
 #| label: fig-disability-tag-funds
-#| fig-cap: "Source: [Tags and Markers](/data/outputs/gender_disability_tags.xlsx) [@tags_and_markers]"
+#| fig-cap: "Source: [Disability Tag](/cpe_evaluation_data.xlsx) @programme_structure"
 
-df = dataset_tags['disability_tag'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
+df = dataset.get('disability_tag')
+if df is not None:
 
-fig = unicef_cpe.plotting.plot_tags(
-  df=df, 
-  label='Disability Tag',
-  y_title ='Expenditures (%)')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig = unicef_cpe.plotting.plot_tags(
+    df=df, 
+    label='Disability Tag',
+    y_title ='Expenditures (%)')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 
@@ -722,17 +339,15 @@ fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 
 ```{python}
 #| label: fig-disability-tag-count
-#| fig-cap: "Source: [Tags and Markers](/data/outputs/gender_disability_tags.xlsx) [@tags_and_markers]"
+#| fig-cap: "Source: [Disability Tag Count](/cpe_evaluation_data.xlsx) @programme_structure"
 
-df = dataset_tags['disability_tag_count'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_tags(
-  df=df, 
-  label='Disability Tag',
-  y_title ='Activity Count')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df = dataset.get('data_disability_tag_count')
+if df is not None:
+  fig = unicef_cpe.plotting.plot_tags(
+    df=df, 
+    label='Disability Tag',
+    y_title ='Activity Count')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 :::
@@ -745,34 +360,31 @@ fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 
 ```{python}
 #| label: fig-adolescent-tag-funds
-#| fig-cap: "Source: [Tags and Markers](/data/outputs/gender_disability_tags.xlsx) [@tags_and_markers]"
+#| fig-cap: "Source: [Adolescent Tag](/cpe_evaluation_data.xlsx) @programme_structure"
 
-df = dataset_tags['adolescent_tag'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
 
-fig = unicef_cpe.plotting.plot_tags(
-  df=df, 
-  label='Adolescent Tag',
-  y_title ='Expenditures (%)')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df = dataset.get('adolescent_tag')
+if df is not None:
+  fig = unicef_cpe.plotting.plot_tags(
+    df=df, 
+    label='Adolescent Tag',
+    y_title ='Expenditures (%)')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### By Activity
 
 ```{python}
 #| label: fig-adolescent-tag-count
-#| fig-cap: "Source: [Tags and Markers](/data/outputs/gender_disability_tags.xlsx) [@tags_and_markers]"
+#| fig-cap: "Source: [Adolescent Tag Count](/cpe_evaluation_data.xlsx) @programme_structure"
 
-df = dataset_tags['adolescent_tag_count'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_tags(
-  df=df, 
-  label='Adolescent Tag',
-  y_title ='Activity Count')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df = dataset.get('adolescent_tag_count')
+if df is not None:
+  fig = unicef_cpe.plotting.plot_tags(
+    df=df, 
+    label='Adolescent Tag',
+    y_title ='Activity Count')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 :::
@@ -786,43 +398,36 @@ fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 #### SitAns Recommendations
 
 ::: {.callout-note}
-This section provides an AI-generated summary of recommendations from the country's most recent situational analysis (SitAn).
+This section provides an AI-generated summary of recommendations extracted from the country's most recent **situational analysis (SitAn)**.
 :::
 
 ```{python}
-data_path = OUTPUT_DATA_DIR.joinpath('sitans_reccomendations_by_goal_area.xlsx')
+#| fig-cap: "Source: [Sitans Reccomendations By Goal Area](/cpe_evaluation_data.xlsx)"
 
-df_timeline = pd.read_excel(data_path)
-mask = df_timeline['country_code'].eq(COUNTRY)
-
-df_timeline = df_timeline[mask].copy()
-if not df_timeline.empty:
+df_timeline = dataset.get('sitans_reccomendations_by_goal_area')
+if df_timeline is not None and df_timeline.empty is False:
   dynamic_content = unicef_cpe.plotting.generate_collapsable_markdown(df_timeline, pargagph_title= 'goal_area', description='recommendation')
   print(dynamic_content)
 else:
-  print('SitAns document for this country is not available.')
+  print('No Information.')
 ```
+
 
 #### UNSCDF National Priorities 
 
 ::: {.callout-note}
-This section provides an AI-generated summary of recommendations categorized by goal areas from the country's most recent situational analysis (SitAn) and the UN Sustainable Development Cooperation Framework (UNSDCF)
+This section provides an AI-generated summary of extracted recommendations categorized by goal areas from the country's most recent situational analysis (SitAn) and the UN Sustainable Development Cooperation Framework (UNSDCF)
 :::
 
 ```{python}
-data_path = OUTPUT_DATA_DIR.joinpath('unsdcf_df_priorities_by_goal_area.xlsx')
 
-df_timeline = pd.read_excel(data_path)
-mask = df_timeline['country_code'].eq(COUNTRY)
-
-df_timeline = df_timeline[mask].copy()
-if not df_timeline.empty:
+df_timeline = dataset.get('unsdcf_df_priorities_by_goal_area')
+if df_timeline is not None and df_timeline.empty is False:
   dynamic_content = unicef_cpe.plotting.generate_collapsable_markdown(df_timeline, pargagph_title= 'goal_area', description='priority')
   print(dynamic_content)
 else:
-  print('UNSCDF document for this country is not available.')
+  print('No Information.')
 ```
-
 
 :::
 
@@ -832,220 +437,73 @@ else:
 ::: {.panel-tabset}
 
 
+#### Comparative Advantages
+
 ::: {.callout-note}
-This section provides an AI-generated summary of the main comparative advantages from the latest Programme Strategy Note (PSN).
+This section provides an AI-generated summary of the main comparative advantages etracted from the latest **Programme Strategy Note (PSN)**.
 :::
 
-#### Comparative Advantages
 ```{python}
-
-
-data_path = OUTPUT_DATA_DIR.joinpath('psns_comparative_advantages.xlsx')
-
-df_timeline = pd.read_excel(data_path)
-mask = df_timeline['country_code'].eq(COUNTRY)
-
-df_timeline = df_timeline[mask].copy()
-if not df_timeline.empty:
-  # dynamic_content = unicef_cpe.plotting.generate_collapsable_markdown(df_timeline, pargagph_title= 'goal_area', description='comparative advantage')
-
+#| fig-cap: "Source: [Psns Comparative Advantages](/cpe_evaluation_data.xlsx)"
+df_timeline = dataset.get('psns_comparative_advantages')
+if df_timeline is not None and df_timeline.empty is False:
   dynamic_content = unicef_cpe.plotting.generate_collapsable_markdown(df_timeline, pargagph_title= 'goal_area', description='comparative_advantage')
   print(dynamic_content)
-  print(dynamic_content)
 else:
-    print('PSN document for this country is not available.')
+  print('No Information.')
 ```
-
-
-#### Social Media 
-
-::: {.callout-note}
-Social media data was collected by scraping a predefined list of profiles belonging to UNICEF and its stakeholders. The posts were then categorized using artificial intelligence to identify relevant themes and goal areas.
-:::
-
-::: {.panel-tabset}
-
-#### UNICEF Mentions by Partner Type
-```{python}
-#| fig-cap: "Source: [Social Media Posts](/data/outputs/social-media-posts) [@social_media]"
-
-# Filter stakeholder posts that mention UNICEF
-mentions_df = df_social_post[
-    (df_social_post['post_by_unicef'] == False) &
-    (df_social_post['contains_unicef_occurrence'] == True)
-].copy()
-
-# Group by partner type and year to count mentions
-mentions_by_partner = mentions_df.groupby(['year', 'partner_type']).size().reset_index(name='mention_count')
-
-# Plotting
-fig = px.bar(
-    mentions_by_partner,
-    x='year',
-    y='mention_count',
-    color='partner_type',
-    title='Number of Mentions of UNICEF by Partner Type Over Time',
-    labels={'mention_count': 'Mentions', 'year': 'Year', 'partner_type': 'Partner Type'},
-    barmode='group',
-    color_discrete_sequence=PALLETE_QUALITATIVE,
-)
-
-fig.update_layout(
-    xaxis=dict(type='category'),
-    legend_title_text='',
-    legend=legend_style,
-)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-
-#### Proportion of Posts by Goal Area
-```{python}
-
-#| fig-cap: "Source: [Social Media Posts](/data/outputs/social-media-posts) [@social_media]"
-
-# Explode the 'label' column to have one goal area per row
-df_exploded = df_social_post.explode('label')
-
-# Calculate the total number of posts for UNICEF and stakeholders
-unicef_total_posts = df_social_post[df_social_post['post_by_unicef'] == True].shape[0]
-stakeholder_total_posts = df_social_post[df_social_post['post_by_unicef'] == False].shape[0]
-
-# Filter posts by UNICEF and stakeholders
-unicef_posts = df_exploded[df_exploded['post_by_unicef'] == True]
-stakeholder_posts = df_exploded[df_exploded['post_by_unicef'] == False]
-
-# Count mentions for each goal area for UNICEF
-unicef_goal_distribution = unicef_posts['label'].value_counts().reset_index()
-unicef_goal_distribution.columns = ['Goal Area', 'Mentions']
-unicef_goal_distribution['Proportion'] = unicef_goal_distribution['Mentions'] / unicef_total_posts
-
-# Count mentions for each goal area for stakeholders
-stakeholder_goal_distribution = stakeholder_posts['label'].value_counts().reset_index()
-stakeholder_goal_distribution.columns = ['Goal Area', 'Mentions']
-stakeholder_goal_distribution['Proportion'] = stakeholder_goal_distribution['Mentions'] / stakeholder_total_posts
-
-# Merge the distributions
-goal_comparison = pd.merge(
-    unicef_goal_distribution[['Goal Area', 'Proportion']],
-    stakeholder_goal_distribution[['Goal Area', 'Proportion']],
-    on='Goal Area',
-    suffixes=('_UNICEF', '_Stakeholders')
-)
-
-# Melt the DataFrame for plotting
-goal_comparison_melted = goal_comparison.melt(
-    id_vars='Goal Area',
-    value_vars=['Proportion_UNICEF', 'Proportion_Stakeholders'],
-    var_name='Entity',
-    value_name='Proportion'
-)
-
-# Map entity names to make them clearer
-goal_comparison_melted['Entity'] = goal_comparison_melted['Entity'].replace({
-    'Proportion_UNICEF': 'UNICEF',
-    'Proportion_Stakeholders': 'Stakeholders'
-})
-
-# Plotting
-fig = px.bar(
-    goal_comparison_melted,
-    x='Proportion',
-    y='Goal Area',
-    color='Entity',
-    title='Proportion of Posts by Goal Area: UNICEF vs. Stakeholders',
-    barmode='group',
-    labels={'Proportion': 'Proportion of Posts', 'Goal Area': 'Goal Area', 'Entity': 'Entity'},
-    color_discrete_sequence=PALLETE_QUALITATIVE,
-)
-
-fig.update_layout(
-    xaxis_tickformat='.1%',
-    legend_title_text='',
-    legend=legend_style,
-)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG) 
-
-```
-
-
-:::
-
 
 #### SDG Areas
-
-::: {.callout-note}
-Expenses in Funding Source by SDG Area are from the Startegic Plan for years 2016-2024 and do not correspond directly to Funds Utilization in the Country Programme Cycles.
-
-Expenses in Agency Funding by SDG Area are from the UN Sustainable Development Cooperation Framework (UNSDCF) for years 2021 to 2024 (there is no UNICEF data for 2024).
-:::
 
 ::: {.panel-tabset}
 
 #### Funding Source by SDG Area
 
+::: {.callout-note}
+Expenses in **Funding Source** by **SDG Area** are from the **Startegic Plan** for the latest two **Country Programme**. **Please Note** that do not correspond directly to Funds Utilization in the Country Programme Cycles.
+
+Expenses in Agency Funding by SDG Area are from the UN Sustainable Development Cooperation Framework (UNSDCF) for years 2021 to 2024 (there is no UNICEF data for 2024).
+:::
+
 ```{python}
 #| label: fig-expenses-by-SDG
-#| fig-cap: "Expenses by CP, Source and SDG (Sources: [Funds by SDG](/data/raw/insight-programme-strategic-sdg-expenditure/)) [@insight_programme_cubes]"
+#| fig-cap: "Source: [CP Funds And Sdg](/cpe_evaluation_data.xlsx) [@insight_programme_cubes]"
 
-SDG_funds_path = OUTPUT_DATA_DIR.joinpath('cp_funds_and_SDG.xlsx')
-df_SDG = pd.read_excel(SDG_funds_path)
+df_sdg = dataset.get('cp_funds_and_sdg')
+if df_sdg is not None:
+  # aggregate Funds by SDG Area, Country and CP
+  df_sdg = df_sdg.groupby(['goal_area', 'goal_area_code', 'country', 'cp', 
+                  'funds_type','start_year'], as_index=False)['funds'].sum().copy()
 
-mask = df_SDG['country'].eq(COUNTRY)
-df = df_SDG.loc[mask].copy()
-# aggregate Funds by SDG Area, Country and CP
-df = df.groupby(['goal_area', 'goal_area_code', 'country', 'cp', 
-                 'funds_type','start_year'], as_index=False)['funds'].sum().copy()
+  df_sdg.sort_values(by=['start_year', 'goal_area_code'], inplace=True, ascending=[True, True])
+  fig = unicef_cpe.plotting.plot_SDG_funds(df=df_sdg)
 
-df.sort_values(by=['start_year', 'goal_area_code'], inplace=True, ascending=[True, True])
-fig = unicef_cpe.plotting.plot_SDG_funds(df=df)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+else:
+  print('No Information.')
 ```
-
 
 #### Agency Funding by SDG Area
 
 ```{python}
-#| fig-cap: "Source: [UNSDCF data](/data/outputs/agencies_SDG_and_outcomes.xlsx) [@UNDSCF_data]"
-agencies_path = OUTPUT_DATA_DIR.joinpath('agencies_SDG_and_outcomes.xlsx')
-sheet_name = 'agencies_SDG'
+#| fig-cap: "Source: [Agencies SDG and Outcomes](/cpe_evaluation_data.xlsx) @insight_programme_cubes, @UNDSCF_data"
 
-df_agencies = pd.read_excel(agencies_path, sheet_name=sheet_name)
-mask = df_agencies['country'].eq(COUNTRY)
-df = df_agencies.loc[mask].copy()
 
-# aggregate Funds by SDG Area, Country and CP
-df = df.groupby(['agencies', 'sdg_goal_codes', 'SDG'], as_index=False)['total_expenditure'].sum().copy()
-# drop expenditures ~ 0
-df = df[abs(df['total_expenditure']) > 0.1]
-df['proportion'] = df['total_expenditure'] / df['total_expenditure'].sum()
+df_agencies = dataset.get('')
+if df_agencies is not None and df_agencies.empty is False:
 
-fig = unicef_cpe.plotting.plot_SDG_agencies(df=df)
+  # aggregate Funds by SDG Area, Country and CP
+  df = df_agencies.groupby(['agencies', 'sdg_goal_codes', 'SDG'], as_index=False)['total_expenditure'].sum().copy()
+  # drop expenditures ~ 0
+  df = df[abs(df['total_expenditure']) > 0.1]
+  df['proportion'] = df['total_expenditure'] / df['total_expenditure'].sum()
 
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig = unicef_cpe.plotting.plot_SDG_agencies(df=df)
+
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+else:
+  print('No Information.')
 ```
-
-<!--
-#### Agency Funding by Outcome and Output Count
-
-```{python}
-#| fig-cap: "Source: [UNDSCF data](/data/outputs/agencies_SDG_and_outcomes.xlsx) [@UNDSCF_data]"
-agencies_path = OUTPUT_DATA_DIR.joinpath('agencies_SDG_and_outcomes.xlsx')
-sheet_name = 'agencies_count'
-
-df_agencies = pd.read_excel(agencies_path, sheet_name=sheet_name)
-mask = df_agencies['country'].eq(COUNTRY)
-df = df_agencies.loc[mask].copy()
-df.sort_values(by=['agency_abbreviations'], inplace=True, ascending=[False])
-
-fig = unicef_cpe.plotting.plot_agencies_count(df=df)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
--->
 
 :::
 
@@ -1055,112 +513,63 @@ fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 
 ::: {.panel-tabset}
 
-#### Goal Area Trends 
-
-::: {.panel-tabset}
-
-#### By Expenditure
+#### Goal Area Expenditures Trends 
 
 ```{python}
-#| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx) @funds_utilization_cube, @programme_structure"
 
-fig = unicef_cpe.plotting.create_stacked_area_chart(df_activities, 'goal_area', 'expenditure', 'sum')
+df_agencies = dataset.get('activities_programme_stucture')
+if df_agencies is not None:
+  fig = unicef_cpe.plotting.create_stacked_area_chart(df_activities, 'goal_area', 'expenditure', 'sum')
 
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
-#### By Activity
+
+#### Strategy Expenditures Trends
 
 ```{python}
-#| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx) @funds_utilization_cube, @programme_structure"
 
-fig  = unicef_cpe.plotting.create_stacked_area_chart(df_activities, 'goal_area', 'activity_name', 'nunique')
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  fig = unicef_cpe.plotting.create_stacked_area_chart(df_activities, 'strategy_name', 'expenditure', 'sum')
 
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
-
-:::
-
-#### Strategy Trends
-
-::: {.panel-tabset}
-
-#### By Expenditure
-
-```{python}
-#| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-
-fig = unicef_cpe.plotting.create_stacked_area_chart(df_activities, 'strategy_name', 'expenditure', 'sum')
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-#### By Activity
-
-```{python}
-#| panel: tabset
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-
-fig = unicef_cpe.plotting.create_stacked_area_chart(df_activities, 'strategy_name', 'activity_name', 'nunique')
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-:::
 
 #### Funding Source Trends
 
-::: {.panel-tabset}
-
-#### Overview
-
-```{python}
-# Load the data
-resources_activities_path = OUTPUT_DATA_DIR.joinpath('resources_activities_programme_stucture.xlsx')
-
-df_resources_activities = pd.read_excel(resources_activities_path)
-mask = df_resources_activities['country'].eq(COUNTRY)
-df_resources_activities = df_resources_activities[mask].copy()
-
-df_resources_activities = df_resources_activities[~pd.isnull(df_resources_activities['cp'])]
-```
-
-```{python}
-
-#| fig-cap: "Source: [Resources Activities Programme Stucture](/data/outputs/resources_activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-
-fig = unicef_cpe.plotting.create_stacked_area_chart(df_resources_activities, 'source', 'expenditure', 'sum')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-
 ```{python}
 #| panel: tabset
-#| fig-cap: "Source: [Resources Activities Programme Stucture](/data/outputs/resources_activities_programme_stucture.xlsx) [@funds_utilization_cube]"
+#| fig-cap: "Source: [Resources Activities Programme Stucture](/cpe_evaluation_data.xlsx) @funds_utilization_cube, @programme_structure"
 
 # Plot data by 'source' for Goal Area and Strategy
+df_resources_activities = dataset.get('resources_activities_programme_stucture')
+if df_resources_activities is not None:
+  
+  df_resources_activities = df_resources_activities[~pd.isnull(df_resources_activities['cp'])]
+  display(Markdown("#### Overview"))
+  fig = unicef_cpe.plotting.create_stacked_area_chart(df_resources_activities, 'source', 'expenditure', 'sum')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 
-for resource in df_resources_activities['source'].unique():
-    mask = df_resources_activities['source'] == resource
-    resource_data = df_resources_activities[mask].copy()
+  for resource in df_resources_activities['source'].unique():
+      mask = df_resources_activities['source'] == resource
+      resource_data = df_resources_activities[mask].copy()
 
-    display(Markdown(f'#### {resource}'))
-    display(Markdown(f''))
-    # By Goal Area
-    display(Markdown(f'##### By Goal Area'))
-    fig_goal = unicef_cpe.plotting.create_stacked_area_chart(resource_data, 'goal_area', 'expenditure', 'sum')
-    fig_goal.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+      display(Markdown(f'#### {resource}'))
+      display(Markdown(f''))
+      # By Goal Area
+      display(Markdown(f'##### By Goal Area'))
+      fig_goal = unicef_cpe.plotting.create_stacked_area_chart(resource_data, 'goal_area', 'expenditure', 'sum')
+      fig_goal.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 
-    # By Strategy
-    display(Markdown(f'##### By Strategy'))
-    fig_strategy = unicef_cpe.plotting.create_stacked_area_chart(resource_data, 'strategy_name', 'expenditure', 'sum')
-    fig_strategy.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+      # By Strategy
+      display(Markdown(f'##### By Strategy'))
+      fig_strategy = unicef_cpe.plotting.create_stacked_area_chart(resource_data, 'strategy_name', 'expenditure', 'sum')
+      fig_strategy.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+
 ```
-
-:::
 
 :::
 
@@ -1174,79 +583,74 @@ No information.
 
 ### 2. Has UNICEF introduced innovative efficiency measures to enable it to be more effective? Which ones and How?
 
-::: {.callout-note}
-This section provides an AI-generated summary of innovations the country office described in their 2016-2023 End of the Year Summary Narrative.
-:::
-
 ::: {.panel-tabset}
 
 #### Evidence of Innovations Overview
 
+::: {.callout-note}
+This section presents an AI-generated summary of innovations described by the country office in their 2018-2023 **End-of-Year Summary Narrative**.
+:::
+
 ```{python}
-#| fig-cap: "Source: [Evidence of Innovations](/data/outputs/evidence_of_innovations.xlsx) [@evidence_of_innovations]"
-data_path = OUTPUT_DATA_DIR.joinpath('evidence_of_innovations.xlsx')
-sheet_name = 'textual_evidence'
+#| fig-cap: "Source: [Evidence of Innovations](/cpe_evaluation_data.xlsx) [@summary_narrative_analysis]"
 
-df_timeline = pd.read_excel(data_path, sheet_name=sheet_name)
-
-mask = df_timeline['country_code'].eq(COUNTRY)
-
-df_timeline = df_timeline[mask].copy()
-fig = unicef_cpe.plotting.plot_timeline_description_bar_chart(df_timeline, title_col='innovation_title', text_col='innovation_text')
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df_timeline = dataset.get('evidence_of_innovations')
+if df_timeline is not None:
+  fig = unicef_cpe.plotting.plot_timeline_description_bar_chart(df_timeline, title_col='innovation_title', text_col='innovation_text')
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### Evidence of Innovations Highlight
 
 ```{python}
-dynamic_content = unicef_cpe.plotting.generate_timeline_markdown(df_timeline)
-print(dynamic_content)
+#| fig-cap: "Source: [Evidence of Innovations](/cpe_evaluation_data.xlsx) [@summary_narrative_analysis]"
+
+if df_timeline is not None:
+  dynamic_content = unicef_cpe.plotting.generate_timeline_markdown(df_timeline)
+  print(dynamic_content)
 ```
 
-:::
-
-::: {.callout-note}
-This section provides an overview of of innovations the country office described in their 2018-2023 COARs.
 :::
 
 ::: {.panel-tabset}
 
-```{python}
-
-activities_path = OUTPUT_DATA_DIR.joinpath('activities_programme_stucture.xlsx')
-
-df_activities = pd.read_excel(activities_path)
-mask = df_activities['country'].eq(COUNTRY)
-df_activities = df_activities[mask].copy()
-```
-
 #### Innovations Expenditures
 
-This section provides an overview of the expenditures on Innovations.
+::: {.callout-note}
+This section provides an overview of innovations identified through associated **Generic Intervention Codes** from the **country programme**.
+:::
 
 ```{python}
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-fig = unicef_cpe.plotting.plot_innovation(df_activities)
-if fig is None:
-  print("There is no evidence of Expenditure on Innovation as Implementation Strategy")
-else:
-  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx)  @funds_utilization_cube, @programme_structure"
+
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  fig = unicef_cpe.plotting.plot_innovation(df_activities)
+  if fig is None:
+    print("There is no evidence of Expenditure on Innovation as Implementation Strategy")
+  else:
+    fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### Innovations Activities
 
-This section provides  an overview of the activities on Innovation.
+::: {.callout-note}
+This section provides an overview of innovations identified through associated **Generic Intervention Codes** from the **country programme**.
+:::
 
 ```{python}
-#| fig-cap: "Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx) [@funds_utilization_cube]"
-fig = unicef_cpe.plotting.plot_innovation(df_activities, metric='activities')
-if fig is None:
-  print("There is no evidence of Expenditure on Innovation as Implementation Strategy")
-else:
-  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx)  @funds_utilization_cube, @programme_structure"
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  fig = unicef_cpe.plotting.plot_innovation(df_activities, metric='activities')
+  if fig is None:
+    print("There is no evidence of Expenditure on Innovation as Implementation Strategy")
+  else:
+    fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 :::
+
 
 ### 3. To what extent the financial resources were allocated in alignment to the defined  priorities?  Are available financial resources (RR, OR) affecting strategic allocation of the resources to priorities and programme implementation?
 
@@ -1258,147 +662,73 @@ This section provides an overview of funds utilization by the CO by funding sour
 
 ```{python}
 #| label: fig-funding-by-cp
-#| fig-cap: "Utilized Funding by Country Programme (Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx)) [@funds_utilization_cube]"
-#| 
-activities_path = OUTPUT_DATA_DIR.joinpath('activities_programme_stucture.xlsx')
-df_activities = pd.read_excel(activities_path)
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx)  @funds_utilization_cube, @programme_structure"
 
-fig = unicef_cpe.plotting.plot_cp(
-  df=df_activities.query('country == @COUNTRY').copy()
-)
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  fig = unicef_cpe.plotting.plot_cp(df_activities)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### By Country Programme, Funding Source and Donor 
 ```{python}
 #| label: fig-funding-by-donor
-#| fig-cap: "Allocated Funding by CP, Source and Donor (Sources: [Donor Hierarchy](/data/raw/insights-contributions-income-analysis-cube/), [Funds by Donor](/data/raw/insight-finance-admin-donor-statement-cube)) [@insight_programme_cubes]"
+#| fig-cap: "Source: [CP Funds Structure](/cpe_evaluation_data.xlsx)  @funds_utilization_cube, @programme_structure"
 
-donor_funds_path = OUTPUT_DATA_DIR.joinpath('cp_funds_stucture.xlsx')
-df_funds_agg = pd.read_excel(donor_funds_path)
-
-mask = df_funds_agg['country'].eq(COUNTRY)
-df = df_funds_agg.loc[mask].copy()
-df.sort_values(by=['start_year'], inplace=True, ascending=True)
-
-fig = unicef_cpe.plotting.plot_donor_funds(df=df)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df_funds_agg = dataset.get('cp_funds_stucture')
+if df_funds_agg is not None:
+  df_funds_agg.sort_values(by=['start_year'], inplace=True, ascending=True)
+  fig = unicef_cpe.plotting.plot_donor_funds(df=df_funds_agg)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
-#### UNICEF Social Media Engagement
-
-```{python}
-#| label: fig-SM-funds
-#| fig-cap: "Share of UNICEF Social Media Posts by Funds Utilization and Goal Area (Sources: [SM, Funds by Goal Area](/data/outputs/social_media_funds_HR.xlsx)) [@social_media]"
-
-SM_funds_HR_path = OUTPUT_DATA_DIR.joinpath('social_media_funds_HR.xlsx')
-df_SM_funds_HR = pd.read_excel(SM_funds_HR_path)
-
-mask = df_SM_funds_HR['country'].eq(COUNTRY)
-df = df_SM_funds_HR.loc[mask].copy()
-
-df.dropna(subset=['share'], inplace=True) # remove entries for which we have no social media data
-df.sort_values(by=['share'], inplace=True, ascending=[False])
-
-fig = unicef_cpe.plotting.plot_sm_funds_bubble(df=df,y='utilized',y_title='Funds Utilization in USD')
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
 
 #### By Outcome
 
 ```{python}
 #| label: fig-funding-by-outcome
-#| fig-cap: "Utilized Funding by Country Programme and Outcome (Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx)) [@funds_utilization_cube]"
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx)  @funds_utilization_cube, @programme_structure"
 
-fig = unicef_cpe.plotting.plot_treemap(
-  df=df_activities.query('country == @COUNTRY').copy(),
-  path=['country', 'cp', 'outcome_name']
-)
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  fig = unicef_cpe.plotting.plot_treemap(
+    df=df_activities,
+    path=['country', 'cp', 'outcome_name']
+  )
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### By Output
 
 ```{python}
 #| label: fig-funding-by-output
-#| fig-cap: "Utilized Funding by Country Programme and Output (Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx)) [@funds_utilization_cube]"
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx)  @funds_utilization_cube, @programme_structure"
 
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
 
-fig = unicef_cpe.plotting.plot_treemap(
-  df=df_activities.query('country == @COUNTRY').copy(),
-  path=['country', 'cp', 'output_name']
-)
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig = unicef_cpe.plotting.plot_treemap(
+    df=df_activities.copy(),
+    path=['country', 'cp', 'output_name']
+  )
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### By Activity
 
 ```{python}
 #| label: fig-funding-by-activity
-#| fig-cap: "Utilized Funding by Country Programme and Activity (Source: [Activities Programme Stucture](/data/outputs/activities_programme_stucture.xlsx)) [@funds_utilization_cube]"
-
-fig = unicef_cpe.plotting.plot_treemap(
-  df=df_activities.query('country == @COUNTRY').copy(),
-  path=['country', 'cp', 'activity']
-)
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+#| fig-cap: "Source: [Activities Programme Stucture](/cpe_evaluation_data.xlsx)  @funds_utilization_cube, @programme_structure"
+#| 
+df_activities = dataset.get('activities_programme_stucture')
+if df_activities is not None:
+  fig = unicef_cpe.plotting.plot_treemap(
+    df=df_activities.copy(),
+    path=['country', 'cp', 'activity']
+  )
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
-
-#### By Cost Category
-
-```{python}
-#| label: fig-funding-by-cost-category
-#| fig-cap: "Utilized Funding by Cost Category (Source: [Funds by Cost Category](/data/outputs/unicef-ecaro-cpe-dataset.xlsx)) [@funds_utilization_cube]"
-
-df = dataset['Funds by Cost Category']
-fig = unicef_cpe.plotting.plot_funds_by_cost_category(
-  df=df.query('country == @COUNTRY').dropna(),
-)
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-#### By Funding Source and Cost Categories
-
-The below graph shows combined data for the last 5 years, i.e., 2019-2024 inclusive.
-
-```{python}
-#| fig-cap: "Utilized Funding by Source and Cost Category (Source: [Funds by Source and GL](/data/outputs/unicef-ecaro-cpe-dataset.xlsx)) [@funds_utilization_cube]"
-
-df = dataset['Funds by Source and GL']
-fig = unicef_cpe.plotting.plot_treemap(
-  df=df.query('country == @COUNTRY and year >= 2019'),
-  path=['country', 'source', 'cost_category']
-)
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-#### By Funding Source and Cost Sub-Categories
-
-The below graph shows combined data for the last 5 years, i.e., 2019-2024 inclusive.
-
-```{python}
-#| fig-cap: "Utilised Funding by Source and Cost Sub-Category (Source: [Funds by Source and GL](/data/outputs/unicef-ecaro-cpe-dataset.xlsx)) [@funds_utilization_cube]"
-
-df = dataset['Funds by Source and GL']
-fig = unicef_cpe.plotting.plot_treemap(
-  df=df.query('country == @COUNTRY and year >= 2019'),
-  path=['country', 'source', 'gl_account']
-)
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-<!-- ```{python}
-#| fig-cap: "Utilised Funding by Cost Sub-Category and Source (Source: [Funds by Source and GL](/data/outputs/unicef-ecaro-cpe-dataset.xlsx)) [@funds_utilization_cube]"
-
-df = dataset['Funds by Source and GL']
-fig = unicef_cpe.plotting.plot_treemap(
-  df=df.query('country == @COUNTRY'),
-  path=['country', 'gl_account', 'source']
-)
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-``` -->
 
 :::
 
@@ -1407,129 +737,6 @@ fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 
 ::: {.panel-tabset}
 
-#### Staff by Goal Area
-
-```{python}
-
-#| label: fig-staff-goal-area
-#| fig-cap: "Source: [HR data](/data/outputs/HR_staff_data.xlsx) [@HR_staff_data]"
-
-PATH_HR = OUTPUT_DATA_DIR.joinpath('HR_staff_data.xlsx')
-xlsx = pd.ExcelFile(PATH_HR)
-dataset_HR = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
-
-df = dataset_HR['hr_count_against_utilized_by_goal_area'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.create_stacked_area_chart(df, 'goal_area', 'hr_count', 'sum')
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-#### Staff against Utilization
-
-```{python}
-#| label: fig-hr-vs-utilized
-#| fig-cap: "HR Count Against Programme Funds Utilization by Goal Area (Source: [HR data](/data/outputs/hr_count_against_utilized_by_goal_area.xlsx)) [@HR_staff_data]"
-
-
-PATH_HR = OUTPUT_DATA_DIR.joinpath('HR_staff_data.xlsx')
-xlsx = pd.ExcelFile(PATH_HR)
-dataset_HR = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
-
-df = dataset_HR['hr_count_against_utilized_by_goal_area'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_hr_count_against_utilized_by_goal_area(df)
-    
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-
-
-#### Staff by Appointment Type
-
-```{python}
-#| label: fig-staff-appointment-type
-#| fig-cap: "Staff by Appointment Type (Source: [HR data](/data/outputs/HR_staff_data.xlsx)) [@HR_staff_data]"
-
-PATH_HR = OUTPUT_DATA_DIR.joinpath('HR_staff_data.xlsx')
-xlsx = pd.ExcelFile(PATH_HR)
-dataset_HR = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
-
-df = dataset_HR['staff_data'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_staff_type(
-  df=df,
-  column_names=df.columns[2:6].tolist(),
-  label='Appointment Type'
-  )
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-#### Staff by Nationality
-
-```{python}
-#| label: fig-staff-nationality
-#| fig-cap: "Staff by Nationality (Source: [HR data](/data/outputs/HR_staff_data.xlsx)) [@HR_staff_data]"
-
-df = dataset_HR['staff_data'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_staff_type(
-  df=df,
-  column_names=df.columns[6:8].tolist(),
-  label='Nationality'
-  )
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-#### Staff by Post Level
-
-```{python}
-#| label: fig-staff-post-level
-#| fig-cap: "Staff by Post Level (Source: [HR data](/data/outputs/HR_staff_data.xlsx)) [@HR_staff_data]"
-
-df = dataset_HR['staff_data'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_staff_type(
-  df=df,
-  column_names=df.columns[8:21].tolist(),
-  label='Post Level'
-  )
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-#### UNICEF Social Media Engagement
-
-```{python}
-#| label: fig-SM-HR
-#| fig-cap: "Share of UNICEF Social Media Posts by HR count and Goal Area (Sources: [SM, HR by Goal Area](/data/outputs/social_media_funds_HR.xlsx)) [@social_media, @HR_staff_data]"
-
-SM_funds_HR_path = OUTPUT_DATA_DIR.joinpath('social_media_funds_HR.xlsx')
-df_SM_funds_HR = pd.read_excel(SM_funds_HR_path)
-
-mask = df_SM_funds_HR['country'].eq(COUNTRY)
-df = df_SM_funds_HR.loc[mask].copy()
-
-df.dropna(subset=['share'], inplace=True) # remove entries for which we have no social media data
-df.sort_values(by=['share'], inplace=True, ascending=[False])
-
-fig = unicef_cpe.plotting.plot_sm_funds_bubble(df=df,y='hr_count',y_title='HR Count')
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
 
 #### Travel Authorization
 
@@ -1537,12 +744,12 @@ This section provides an overview of the authorised travel for the country offic
 
 ```{python}
 #| label: fig-travel-expenses
-#| fig-cap: "Travel Expenses by Trip Reason (Source: [Insight Trips](/data/outputs/unicef-ecaro-cpe-dataset.xlsx)) [@Trips_Mykola]"
+#| fig-cap: "Source: [Insight Trips](/cpe_evaluation_data.xlsx) [@finance_trips]"
 
-df = dataset['Insight Trips']
-mask = df['country'].eq(COUNTRY)
-fig = unicef_cpe.plotting.plot_trips(df.loc[mask])
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG, height=300)
+df = dataset.get('insight_trips')
+if df is not None:
+  fig = unicef_cpe.plotting.plot_trips(df)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 :::
@@ -1554,8 +761,6 @@ _To what extent is UNICEF through its strategies, operations, partnerships and a
 ### 1. What external and internal enabling/restrictive factors affected its contribution?  How UNICEF’s positioning enable/restricted itself to deliver results?
 
 
-::: {.panel-tabset}
-
 #### Major Contributions
 
 ::: {.callout-note}
@@ -1563,100 +768,18 @@ Below is an AI-generated summary of major contributions and drivers of results f
 :::
 
 ```{python}
-df = dataset['COAR Summaries']
-mask = df['country'].eq(COUNTRY)
-summary = df.loc[mask, 'contributions_summary'].item()
-print(unicef_cpe.utils.remove_section_title(summary, h_title='####'))
+
+df = dataset.get('COAR_summaries')
+if df is not None:
+  summary = ''.join(df['contributions_summary'].values)
+  print(unicef_cpe.utils.remove_section_title(summary, h_title='####'))
 ```
 
-#### Strengths and Guidances
 
-```{python}
-data_path = OUTPUT_DATA_DIR.joinpath('rd_letters-strengths-improvement.xlsx')
-
-df_timeline = pd.read_excel(data_path)
-
-mask = df_timeline['country_code'].eq(COUNTRY)
-
-df_timeline = df_timeline[mask].copy()
-dynamic_content = unicef_cpe.plotting.generate_timeline_markdown(df_timeline, itermediate_title='feedback_title', description='feedback_text')
-print(dynamic_content)
-```
-
-::: 
-
-```{python}
-files = list(PATH_DATA.joinpath('cpes').glob(f'{COUNTRY.lower()}*.txt'))
-if files:
-  file_path = files[0]
-  # e.g. "tur-cpe-2016-2020.txt" -> "2016-2020"
-  period = file_path.name.split('cpe-')[-1].replace('.txt', '')
-  print(f'Recommendations from the most recent CPE ({period}).\n\n')
-  with open(file_path) as file:
-    print(file.read())
-else:
-  print('Strengths and Guidance or CPE for this country are not available.')
-```
 
 ### 2. To what extent is UNICEF positioned itself among the most influencing stakeholder to achieve results for children? To what extent has UNICEF positioned itself to contribute to policy change?
 
-#### Social Media 
-
-::: {.callout-note}
-Social media data was collected by scraping a predefined list of profiles belonging to UNICEF and its stakeholders. The posts were then categorized using artificial intelligence to identify relevant themes and goal areas.
-:::
-
-::: {.panel-tabset}
-
-#### Top Mentiones by Stakeholders
-```{python}
-#| fig-cap: "Source: [Social Media Posts](/data/outputs/social-media-posts) [@social_media]"
-
-df_exploded = df_social_post.explode('mentions').copy()
-
-# Filter stakeholder posts
-stakeholder_posts = df_exploded[df_exploded['post_by_unicef'] == False].copy()
-
-# Group by mentioned entities to count frequency
-mentions_count = stakeholder_posts['mentions'].value_counts().reset_index()
-mentions_count.columns = ['Mentioned_Entity', 'Mention_Count']
-
-# Get the top 10 mentioned entities
-top_mentions = mentions_count.head(30).copy()
-
-# Check if 'UNICEF' is among the top mentions
-#top_mentions['Is_UNICEF'] = top_mentions['Mentioned_Entity'].apply(lambda x: 'UNICEF' if 'unicef' in x.lower() else 'Other')
-unicef_keywords = [
-    'UNICEF', 'ЮНИСЕФ', 'ЮНІСЕФ', 'ՅՈՒՆԻՍԵՖ', 'ՅՈՒՆԻՍԵՖ', 'YUNICEF', 'UNİCEF',
-    "unicef", "юнисеф", "юнісеф", "յունիսեֆ", "yunicef", "unıcef"
-]
-
-# Check if any of the unicef_keywords are present in the 'Mentioned_Entity'
-top_mentions['Is_UNICEF'] = top_mentions['Mentioned_Entity'].apply(
-    lambda x: 'UNICEF' if any(keyword.lower() in x.lower() for keyword in unicef_keywords) else 'Other'
-)
-
-
-# Plotting
-fig = px.bar(
-    top_mentions,
-    x='Mentioned_Entity',
-    y='Mention_Count',
-    color='Is_UNICEF',
-    labels={'Mention_Count': 'Mentions', 'Mentioned_Entity': ''},
-    color_discrete_map = goal_area_colors
-)
-
-fig.update_layout(
-    xaxis_tickangle=-45,
-    legend_title_text='',
-    #legend=legend_style,
-    )
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-:::
+No information.
 
 ### 3. To what extent UNICEF positioning in the general public, CSOs , and private sector enables the delivery of results for children?
 
@@ -1665,34 +788,31 @@ The tabset below shows core programme indicators tracked by the country office b
 :::
 
 ```{python}
-# TODO the heatmap plotting function generate_heatmap has been changed to use dynamic heiaght, but cannot be tested by Arseniy for whatever error. Check if issues arise during report generation
-
 # Load the data
-indicator_path = OUTPUT_DATA_DIR.joinpath('indicator_codes.xlsx')
-df = pd.read_excel(indicator_path)
 
-df = df[df['target_year'] > 2017]
 
-mask = df['country_code'].eq(COUNTRY)
-df = df[mask].copy()
+df = dataset.get('indicator_codes')
+if df is not None:
+  df = df[df['target_year'] > 2017]
 
-# Assuming you already have these variables defined: indicator_categories, goal_areas
-indicator_categories = df['indicator_category'].unique()
-goal_areas = df['goal_area'].unique()
+  # Assuming you already have these variables defined: indicator_categories, goal_areas
+  indicator_categories = df['indicator_category'].unique()
+  goal_areas = df['goal_area'].unique()
 
-# Dictionary to hold the generated heatmaps
-heatmaps = {}
+  # Dictionary to hold the generated heatmaps
+  heatmaps = {}
 
-# Generate the heatmaps for each category and goal_area
-for category in indicator_categories:
-    heatmaps[category] = {}
-    for goal_area in goal_areas:
-        df_filtered = df[(df['indicator_category'] == category) & (df['goal_area'] == goal_area)].copy()
-        if not df_filtered.empty: # Only create heatmaps if data is available
+  # Generate the heatmaps for each category and goal_area
+  for category in indicator_categories:
+      heatmaps[category] = {}
+      for goal_area in goal_areas:
+          df_filtered = df[(df['indicator_category'] == category) & (df['goal_area'] == goal_area)].copy()
+          if not df_filtered.empty: # Only create heatmaps if data is available
             try:
                 heatmaps[category][goal_area] = unicef_cpe.plotting.generate_heatmap(df_filtered)
             except Exception as e:
                 heatmaps[category][goal_area] = None
+
 ```
 
 #### Indicator Achievements 
@@ -1701,37 +821,37 @@ for category in indicator_categories:
 #### Aggregated view
 
 ```{python}
-#| fig-cap: "Source: [Indicator Data](/data/outputs/total_indicator_achievements.xlsx) [@indicator_data]"
-indicator_path = OUTPUT_DATA_DIR.joinpath('total_indicator_achievements.xlsx')
+#| fig-cap: "Source: [Total Indicator Achievements](/cpe_evaluation_data.xlsx)  [@indicator_data]"
 
-df_indicators = pd.read_excel(indicator_path)
-df_indicators = df_indicators[df_indicators['target_year'] > 2017]
-mask = df_indicators['country'].eq(COUNTRY)
-# Grouping by "ram3_year" and counting "rating" based on "indicator_rating_type"
-df = df_indicators.loc[mask].copy()
-# Variables that can be changed for plotting:
-# indicator_ratings_types_list = ['End-year assessment','End-Term','Mid-year assessment']
-# x_value_list = ["finalization_year", "target_year"]
-rating_type = 'End-year assessment'
-x_value = "target_year"
-df = df.loc[df['indicator_rating_type'].eq(rating_type)].copy()
-df = df.groupby([x_value, "rating"]).size().unstack(fill_value=0).reset_index()
-fig = unicef_cpe.plotting.plot_ram_indicators(df,  x_value, rating_type)
-fig.update_layout(
-    legend_title_text='',
-    legend=legend_style,
-    yaxis_title='Number of Indicators'
-    )
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df_indicators = dataset.get('total_indicator_achievements')
+if df_indicators is not None:
+
+  df_indicators = df_indicators[df_indicators['target_year'] > 2017]
+  # Grouping by "ram3_year" and counting "rating" based on "indicator_rating_type"
+
+  # Variables that can be changed for plotting:
+  # indicator_ratings_types_list = ['End-year assessment','End-Term','Mid-year assessment']
+  # x_value_list = ["finalization_year", "target_year"]
+  rating_type = 'End-year assessment'
+  x_value = "target_year"
+  df_indicators = df_indicators.loc[df_indicators['indicator_rating_type'].eq(rating_type)].copy()
+  df_indicators = df_indicators.groupby([x_value, "rating"]).size().unstack(fill_value=0).reset_index()
+  fig = unicef_cpe.plotting.plot_ram_indicators(df_indicators,  x_value, rating_type)
+  fig.update_layout(
+      legend_title_text='',
+      legend=legend_style,
+      yaxis_title='Number of Indicators'
+      )
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### Standard Indicators
 
-::: {.panel-tabset}
-
 ```{python}
 #| panel: tabset
-#| fig-cap: "Source: [Indicator Codes](/data/outputs/indicator_codes.xlsx) [@indicator_data])"
+#| fig-cap: "Source: [Indicator Codes](/cpe_evaluation_data.xlsx) [@indicator_data])"
+
+
 for goal_area in goal_areas:
     category = indicator_categories[1]
     if goal_area in heatmaps[category]:
@@ -1741,15 +861,11 @@ for goal_area in goal_areas:
             fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
-:::
-
 #### Additional Indicators
-
-::: {.panel-tabset}
 
 ```{python}
 #| panel: tabset
-#| fig-cap: "Source: [Indicator Codes](/data/outputs/indicator_codes.xlsx) [@indicator_data])"
+#| fig-cap: "Source: [Indicator Codes](/cpe_evaluation_data.xlsx) [@indicator_data])"
 for goal_area in goal_areas:
     category = indicator_categories[0]
     if goal_area in heatmaps[category]:
@@ -1761,31 +877,31 @@ for goal_area in goal_areas:
 
 :::
 
-:::
-
 ::: {.callout-note}
-The tabset below shows relevant indicators from TransMonEE database by thematic groups.
+The tabset below shows relevant indicators from **TransMonEE** database by thematic groups.
 :::
 
-::: {.panel-tabset}
 ```{python}
 #| panel: tabset
-#| fig-cap: "Source: [SDMX TransMonEE Indicators](/data/raw/unicef-ecaro-cpe-dataset.xlsx) [@TransMonEE_indicators]"
-df = pd.read_excel(DATA_DIR.joinpath('raw', 'SDMX TransMonEE Indicators Updated 2024.12.10.xlsx'))
-mask = df['country'].eq(COUNTRY) & df['wealth'].eq('Total') & df['age'].eq('Total')
-df = df.loc[mask].reset_index(drop=True)
+#| fig-cap: "Source: [Total Indicator Achievements](/cpe_evaluation_data.xlsx) [@TransMonEE_indicators])"
 
-plotted = set()
-for variables, df_group in df.groupby(['group', 'indicator_id']):
-  group, *_ = variables
-  if group not in plotted:
-    display(Markdown(f'#### {group}'))
-    plotted.add(group)
-  fig = unicef_cpe.plotting.plot_transmonee(df_group)
-  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df = pd.read_excel(DATA_DIR.joinpath('raw', 'SDMX', 'SDMX TransMonEE Indicators.xlsx'))
+
+df_indicators = dataset.get('total_indicator_achievements')
+if df_indicators is not None:
+
+  mask = df['country'].eq(COUNTRY) & df['wealth'].eq('Total') & df['age'].eq('Total')
+  df = df.loc[mask].reset_index(drop=True)
+
+  plotted = set()
+  for variables, df_group in df.groupby(['group', 'indicator_id']):
+    group, *_ = variables
+    if group not in plotted:
+      display(Markdown(f'#### {group}'))
+      plotted.add(group)
+    fig = unicef_cpe.plotting.plot_transmonee(df_group)
+    fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
-
-:::
 
 ### 4. To what extent is UNICEF successfully introducing and implementing innovative models to be delivered at scale through national systems? How? What is enabling/restricting the introduction and implementation of these innovative interventions?
 
@@ -1801,127 +917,115 @@ _To what extent did UNICEF manage to ensure sustained political, financial and 
 
 ```{python}
 #| label: fig-patner-count-by-gic
-#| fig-cap: "Source: [Partner data](/data/outputs/partner_count_by_gic.xlsx)"
+#| fig-cap: "Source: [Partner Count by Gic](/cpe_evaluation_data.xlsx)"
 
 
-DATA_PATH = OUTPUT_DATA_DIR.joinpath('partnerships_from_insight.xlsx')
-xlsx = pd.ExcelFile(DATA_PATH)
-dataset_partners = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
-
-df = dataset_partners['partner_count_by_gic'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_partner_count_by_gic(df)
-    
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df = dataset.get('partner_count_by_gic')
+if df is not None and df.empty is False:
+  fig = unicef_cpe.plotting.plot_partner_count_by_gic(df)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 ### 2. To what extent does UNICEF build strategic partnerships (technical and advocacy) to ensure sustained results of UNICEF’s supported national programmes and policies?​
 
 ::: {.panel-tabset}
+
+
 ```{python}
 # todo commented this section since the data does not seem to be used anywhere. to check if this breaks something.
-agreement_path = OUTPUT_DATA_DIR.joinpath('partnership_agreements.xlsx')
-df_agreement = pd.read_excel(agreement_path)
-
-mask = df_agreement['country_code'].eq(COUNTRY)
-df_agreement = df_agreement[mask].copy()
+df_agreement = dataset.get('partnership_agreements')
 ```
 
-
-This section provides  an overview of the distribution of short and long agreements and their renewal rates.
-
+#### Agrements Duration
 
 ```{python}
-#|fig-cap: "Source: [Partnership Agreements](/data/outputs/partnership_agreements.xlsx) [@partnership_agreements]"
+#|fig-cap: "Source: [Partnership Agreements](/cpe_evaluation_data.xlsx) [@partnership_agreements]"
 
-agreement_length_by_year = df_agreement.groupby(['start_year', 'agreement_length']).size().unstack(fill_value=0)
+if df_agreement is not None:
 
-agreement_length_by_year_percent = agreement_length_by_year.div(agreement_length_by_year.sum(axis=1), axis=0) * 100
+  agreement_length_by_year = df_agreement.groupby(['start_year', 'agreement_length']).size().unstack(fill_value=0)
 
-# Create the plot using Plotly
-fig = unicef_cpe.plotting.make_subplots(specs=[[{"secondary_y": True}]])
-if 'short' in agreement_length_by_year.columns:
-  # Add stacked bars for short and long agreements using custom colors
-  fig.add_trace(
-      go.Bar(x=agreement_length_by_year.index, y=agreement_length_by_year['short'], 
-            name='Short Agreements (≤ 365 days)', marker_color=PALLETE_QUALITATIVE[0]),
-      secondary_y=False,
+  
+  agreement_length_by_year_percent = agreement_length_by_year.div(agreement_length_by_year.sum(axis=1), axis=0) * 100
+
+  # Create the plot using Plotly
+  fig = unicef_cpe.plotting.make_subplots(specs=[[{"secondary_y": True}]])
+  if 'short' in agreement_length_by_year.columns:
+    # Add stacked bars for short and long agreements using custom colors
+    fig.add_trace(
+        go.Bar(x=agreement_length_by_year.index, y=agreement_length_by_year['short'], 
+              name='Short Agreements (≤ 365 days)', marker_color=PALLETE_QUALITATIVE[0]),
+        secondary_y=False,
+    )
+  if 'long' in agreement_length_by_year.columns:
+    fig.add_trace(
+        go.Bar(x=agreement_length_by_year.index, y=agreement_length_by_year['long'], 
+              name='Long Agreements (> 365 days)', marker_color=PALLETE_QUALITATIVE[1]),
+        secondary_y=False,
+    )
+
+  if 'long' in agreement_length_by_year_percent.columns:
+    # Add a line for the percentage of long agreements using custom colors
+    fig.add_trace(
+        go.Scatter(x=agreement_length_by_year_percent.index, y=agreement_length_by_year_percent['long'], 
+                  mode='lines+markers', name='Percentage of Long Agreements', 
+                  marker=dict(color=PALLETE_QUALITATIVE[2]), line=dict(color=PALLETE_QUALITATIVE[2], width=2)),
+        secondary_y=True,
+    )
+
+  # Update the layout
+  fig.update_layout(
+      #title='Number of Short and Long Agreements with Percentage of Long Agreements',
+      xaxis=dict(
+          title='Year',
+          tickmode='linear',  # Ensure evenly spaced ticks
+          dtick=1,  # Force integer ticks every 1 year
+          tickformat='d',  # Display ticks as integers (no decimal points)
+      ),
+      yaxis_title='Number of Agreements',
+      legend_title='Agreement Type',
+      barmode='stack',
   )
-if 'long' in agreement_length_by_year.columns:
-  fig.add_trace(
-      go.Bar(x=agreement_length_by_year.index, y=agreement_length_by_year['long'], 
-            name='Long Agreements (> 365 days)', marker_color=PALLETE_QUALITATIVE[1]),
-      secondary_y=False,
-  )
 
-if 'long' in agreement_length_by_year_percent.columns:
-  # Add a line for the percentage of long agreements using custom colors
-  fig.add_trace(
-      go.Scatter(x=agreement_length_by_year_percent.index, y=agreement_length_by_year_percent['long'], 
-                mode='lines+markers', name='Percentage of Long Agreements', 
-                marker=dict(color=PALLETE_QUALITATIVE[2]), line=dict(color=PALLETE_QUALITATIVE[2], width=2)),
-      secondary_y=True,
-  )
+  # Set secondary y-axis properties
+  fig.update_yaxes(title_text="Percentage of Long Agreements (%)", secondary_y=True)
 
-# Update the layout
-fig.update_layout(
-    #title='Number of Short and Long Agreements with Percentage of Long Agreements',
-    xaxis_title='Year',
-    yaxis_title='Number of Agreements',
-    legend_title='Agreement Type',
-    barmode='stack',
-)
-
-# Set secondary y-axis properties
-fig.update_yaxes(title_text="Percentage of Long Agreements (%)", secondary_y=True)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 
 #### Partners new to previous years
 
+This section provides  an overview of the distribution of short and long agreements and their renewal rates.
+
 ```{python}
 #| label: fig-patner-year-to-year-new
-#| fig-cap: "Existing and new partnerships (Source: [Partner data](/data/outputs/partner_count_new_year_to_year.xlsx)) [@partnership_data]"
+#| fig-cap: "Source: [Partner data](/cpe_evaluation_data.xlsx) [@partnership_data]"
 
-
-DATA_PATH = OUTPUT_DATA_DIR.joinpath('partnerships_from_insight.xlsx')
-xlsx = pd.ExcelFile(DATA_PATH)
-dataset_partners = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
-
-df = dataset_partners['partner_count_new_to_past'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
-
-fig = unicef_cpe.plotting.plot_partner_count_new_to_past(df)
-    
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+df = dataset.get('partner_count_new_to_past')
+if df is not None and df.empty is False:
+  fig = unicef_cpe.plotting.plot_partner_count_new_to_past(df)
+      
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 #### Partners by yearly fr amount
 
 ```{python}
 #| label: fig-patner-fr-consumed-by-year
-#| fig-cap: "FR by Partner (Source: [Partner data](/data/outputs/partner_fr_consumed_by_year.xlsx)) [@partnership_data]"
+#| fig-cap: "Source: [Partner data](/cpe_evaluation_data.xlsx) [@partnership_data]"
 
 
-DATA_PATH = OUTPUT_DATA_DIR.joinpath('partnerships_from_insight.xlsx')
-xlsx = pd.ExcelFile(DATA_PATH)
-dataset_partners = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
+df = dataset.get('hr_count_againspartner_fr_consumed_by_yeart_utilized_by_goal_area')
+if df is not None and df.empty is False:
+  df = df.pivot(index=['country', 'year'], columns='partner_rating_binned', values=['implementing_partner', 'fr_amount']).reset_index()
+  mask = df['country'].eq(COUNTRY)
+  df = df.loc[mask].copy()
 
-df = dataset_partners['partner_fr_consumed_by_year'].copy()
-df = df.pivot(index=['country', 'year'], columns='partner_rating_binned', values=['implementing_partner', 'fr_amount']).reset_index()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
+  fig = unicef_cpe.plotting.plot_partner_fr_consumed_by_year(df)
+      
 
-fig = unicef_cpe.plotting.plot_partner_fr_consumed_by_year(df)
-    
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
 :::
@@ -1943,13 +1047,11 @@ Below is an AI-generated summary of the country's partnerships and collaboration
 :::
 
 ```{python}
-df = dataset['COAR Summaries']
-partnerships_path = OUTPUT_DATA_DIR.joinpath('coars_partnerships_summary.xlsx')
 
-df = pd.read_excel(partnerships_path)
-
-summary = df.loc[df['country'].eq(COUNTRY), 'partnerships_summary'].item()
-print(summary)
+df_partnerships_summary = dataset.get('coars_partnerships_summary')
+if df_partnerships_summary is not None and df_partnerships_summary.empty is False:
+  summary = df_partnerships_summary['partnerships_summary'].values[0].replace('# ', '')
+  print(summary)
 ```
 
 
@@ -1959,177 +1061,53 @@ print(summary)
 
 ```{python}
 #| label: fig-patner-year-by-year
-#| fig-cap: "Partner Count (Source: [Partner data](/data/outputs/partner_count_by_country_year.xlsx)) [@partnership_data]"
+#| fig-cap: "Source: [Partner count by country year](/cpe_evaluation_data.xlsx) [@partnership_data]"
 
-DATA_PATH = OUTPUT_DATA_DIR.joinpath('partnerships_from_insight.xlsx')
-xlsx = pd.ExcelFile(DATA_PATH)
-dataset_partners = {sheet_name: xlsx.parse(sheet_name) for sheet_name in xlsx.sheet_names}
+df = dataset.get('df_partner_count_by_country_year')
+if df is not None and df.empty is False:
 
-df = dataset_partners['df_partner_count_by_country_year'].copy()
-mask = df['country'].eq(COUNTRY)
-df = df.loc[mask].copy()
+  fig = unicef_cpe.plotting.plot_partner_count_by_country_year(df)
 
-fig = unicef_cpe.plotting.plot_partner_count_by_country_year(df)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
 ```
 
-<!-- ```{python}
-#| label: fig-partnership-agreements
-#| fig-cap: "Number of Partnership Agreements (Source: [Partnership Agreements](/data/outputs/unicef-ecaro-cpe-dataset.xlsx)) [@partnership_agreements]"
- 
-df = dataset['Partnership Agreements']
-mask = df['country'].eq(COUNTRY)
-fig = unicef_cpe.plotting.plot_partnerships(df.loc[mask])
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG, height=350)
-``` -->
+
 
 #### Partner Transfers by Vendor
 
 ```{python}
 #| label: fig-top-partners
-#| fig-cap: "Top Partners by Total Transfers (Source: [Partnership Transfers](/data/outputs/unicef-ecaro-cpe-dataset.xlsx)) [@partnership_transfers]"
+#| fig-cap: "Source: [Partnership Transfers](/cpe_evaluation_data.xlsx) [@partnership_transfers]"
 
-df = dataset['Partnership Transfers']
-df = df.groupby(['country', 'vendor'], as_index=False).agg({'transfers_to_ip': 'sum'})
-df.sort_values(['country', 'transfers_to_ip'], ascending=[True, False], ignore_index=True, inplace=True)
-mask = df['country'].eq(COUNTRY)
+df = dataset.get('partnership_transfers')
+if df is not None and df.empty is False:
+  df = df.groupby(['country', 'vendor'], as_index=False).agg({'transfers_to_ip': 'sum'})
+  df.sort_values(['country', 'transfers_to_ip'], ascending=[True, False], ignore_index=True, inplace=True)
+  mask = df['country'].eq(COUNTRY)
 
-fig = unicef_cpe.plotting.plot_top_partners(df.loc[mask])
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG, height=400)
+  fig = unicef_cpe.plotting.plot_top_partners(df.loc[mask])
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG, height=400)
 ```
 
 #### Partner Transfers by Area
 
 ```{python}
 #| label: fig-transfers-by-results-area
-#| fig-cap: "Total Transfers by Goal Area (Source: [Partnership Transfers](/data/outputs/unicef-ecaro-cpe-dataset.xlsx)) [@partnership_transfers]"
+#| fig-cap: "Source: [Partnership Transfers](/cpe_evaluation_data.xlsx) [@partnership_transfers]"
 
-df = dataset['Partnership Transfers']
+df = dataset.get('partnership_transfers')
+if df is not None and df.empty is False:
 
-#Remove Goal Area code from text -> it allows comparing Gol Areas between different cycles
-df['goal_area'] = df['goal_area'].str.replace(r'^\d+\s*', '', regex=True)
-df['goal_area'] = df['goal_area'].str.replace('Cross-Sectoral', 'Cross Sectoral')
+  #Remove Goal Area code from text -> it allows comparing Gol Areas between different cycles
+  df['goal_area'] = df['goal_area'].str.replace(r'^\d+\s*', '', regex=True)
+  df['goal_area'] = df['goal_area'].str.replace('Cross-Sectoral', 'Cross Sectoral')
 
-df = df.groupby(['country', 'fr_start_year', 'goal_area'], as_index=False).agg({'transfers_to_ip': 'sum'})
-mask = df['country'].eq(COUNTRY)
+  df = df.groupby(['country', 'fr_start_year', 'goal_area'], as_index=False).agg({'transfers_to_ip': 'sum'})
 
-
-fig = unicef_cpe.plotting.plot_partnerships_by_area(df.loc[mask])
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG, height=400)
+  fig = unicef_cpe.plotting.plot_partnerships_by_area(df)
+  fig.show(renderer=RENDERER, config=MODEBAR_CONFIG, height=400)
 ```
 
-
-#### Social Media 
-
-::: {.callout-note}
-Social media data was collected by scraping a predefined list of profiles belonging to UNICEF and its stakeholders. The posts were then categorized using artificial intelligence to identify relevant themes and goal areas.
-:::
-
-::: {.panel-tabset}
-
-#### Unique Stakeholders Mentioning UNICEF 
-```{python}
-
-#| fig-cap: "Source: [Social Media Posts](/data/outputs/social-media-posts) [@social_media]"
-
-# Filter posts by partner types that mention UNICEF
-
-
-partner_mentions = df_social_post[
-    (df_social_post['post_by_unicef'] == False) &
-    (df_social_post['contains_unicef_occurrence'] == True) &
-    (df_social_post['partner_type'].notna())
-].copy()
-
-# Group by year and partner type, count unique partners
-partner_diversity = partner_mentions.groupby(['year', 'partner_type'])['partner_name'].nunique().reset_index(name='unique_partners')
-
-# Plotting the diversity over time
-fig = px.line(
-    partner_diversity,
-    x='year',
-    y='unique_partners',
-    color='partner_type',
-    labels={'unique_partners': 'Unique Stakeholders'},
-    color_discrete_map = goal_area_colors
-)
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-#### Stakeholders with Highest and Lowest of UNICEF Mentions
-
-```{python}
-#| fig-cap: "Source: [Social Media Posts](/data/outputs/social-media-posts) [@social_media]"
-
-stakeholder_posts = df_social_post[df_social_post['post_by_unicef'] == False].copy()
-
-# Add a column indicating if UNICEF is mentioned
-stakeholder_posts['mentions_unicef'] = stakeholder_posts['mention_unicef'] | stakeholder_posts['contains_unicef_occurrence']
-
-# Group by stakeholder to calculate total mentions and total posts
-stakeholder_summary = stakeholder_posts.groupby('partner_name').agg(
-    total_posts=('text_original', 'count'),
-    mentions_unicef=('mentions_unicef', 'sum')
-).reset_index()
-
-# Calculate the proportion of posts that mention UNICEF
-stakeholder_summary['proportion_mentions'] = stakeholder_summary['mentions_unicef'] / stakeholder_summary['total_posts']
-
-# Filter out stakeholders who have at least one mention of UNICEF
-stakeholders_with_mentions = stakeholder_summary[stakeholder_summary['mentions_unicef'] > 0]
-
-# Identify top 10 stakeholders with highest number of UNICEF mentions
-top_10_highest_mentions = stakeholders_with_mentions.sort_values(by='mentions_unicef', ascending=False).head(10)
-
-# Identify top 10 stakeholders with lowest number of UNICEF mentions
-# Exclude stakeholders with a very low number of total posts to focus on significant contributors
-min_total_posts = 10  # Adjust this threshold based on your dataset
-stakeholders_with_mentions = stakeholders_with_mentions[stakeholders_with_mentions['total_posts'] >= min_total_posts]
-top_10_lowest_mentions = stakeholders_with_mentions.sort_values(by='mentions_unicef', ascending=True).head(10)
-
-# Combine the two datasets
-combined_top_stakeholders = pd.concat([top_10_highest_mentions, top_10_lowest_mentions])
-
-# Add a column to indicate whether the stakeholder is in the top or bottom group
-combined_top_stakeholders['Mention_Level'] = combined_top_stakeholders.apply(
-    lambda row: 'Highest Mentions' if row['partner_name'] in top_10_highest_mentions['partner_name'].values else 'Lowest Mentions',
-    axis=1
-)
-
-combined_top_stakeholders['partner_name'] = combined_top_stakeholders['partner_name'].apply(
-    lambda x: x if len(x) <= 15 else x[:30] + '...'
-)
-
-# Plotting
-fig = px.bar(
-    combined_top_stakeholders,
-    y='partner_name',  # Stakeholders on the y-axis
-    x='mentions_unicef',  # Mentions on the x-axis
-    color='Mention_Level',
-    labels={'mentions_unicef': 'Number of UNICEF Mentions', 'partner_name': 'Stakeholder', 'Mention_Level': 'Group'},
-    text='mentions_unicef',
-    orientation='h',  # Specifies a horizontal bar chart
-    color_discrete_map={
-      'Highest Mentions': "#80BD41",  # Lime Green
-      'Lowest Mentions':"#E2231A",  # Bright Red
-    }  # Optional: color mapping
-)
-
-fig.update_layout(
-    yaxis=dict(
-        title='Stakeholder',
-    ),
-    xaxis_title='UNICEF Mentions',
-    legend_title_text='',
-    showlegend=True,
-    legend=legend_style,
-)
-
-fig.show(renderer=RENDERER, config=MODEBAR_CONFIG)
-```
-
-:::
 
 :::
 

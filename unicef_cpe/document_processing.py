@@ -85,7 +85,33 @@ def filter_common_titles(title_frequency, min_frequency):
     common_titles = [title for title, freq in title_frequency.items() if freq >= min_frequency]
     return common_titles
 
+def extract_keyword_chunks(text, keyword, token_window=100):
+    """
+    Extracts chunks of text centered around a keyword, with a given number of words before and after.
+    
+    Parameters:
+    - text (str): The full text to search within.
+    - keyword (str): The keyword to find in the text.
+    - token_window (int): Number of words before and after the keyword to include in the chunk.
+    
+    Returns:
+    - List of text chunks containing the keyword within the specified token range.
+    """
+    # Split text into words (tokens) using regex to handle punctuation properly
+    tokens = re.findall(r'\b\w+\b', text)
+    
+    # Find all occurrences of the keyword (case insensitive)
+    keyword_indices = [i for i, token in enumerate(tokens) if token.lower() == keyword.lower()]
+    title = ""
+    # Extract chunks centered around the keyword
+    chunks = []
+    for index in keyword_indices:
+        start = max(index - token_window, 0)
+        end = min(index + token_window + 1, len(tokens))
+        chunk = " ".join(tokens[start:end])
+        chunks.append([title,chunk])
 
+    return chunks
 
 
 def extract_sections_with_text(text, section_titles):

@@ -1107,17 +1107,17 @@ def plot_donor_funds(df: pd.DataFrame):
     for i, cp in enumerate(unique_cp):
         # Filter the DataFrame for the current CP value
         df_cp = df[df['cp'] == cp].copy()
-        df_cp.sort_values(by=['funds_type','donor_level2', 'grand_total'], ascending=[True, False, False], inplace=True)
+        df_cp.sort_values(by=['funds_type','donor_level2', 'allocation'], ascending=[True, False, False], inplace=True)
         # Assign colors based on the donor_level2 values using the color map
         bar_colors = [color_map[donor] for donor in df_cp['donor_level2']]
         # Create a bar chart for the current CP value
         fig.add_trace(go.Bar(
             y=df_cp['funds_type'],
-            x=df_cp['grand_total'],
+            x=df_cp['allocation'],
             marker=dict(color=bar_colors),  # Use the mapped colors
             hoverinfo='text',
             hovertext=df_cp.apply(
-                lambda row: f"Donor: {row['donor']}<br>Donor Class (Level 2): {row['donor_level2']}<br>Total USD: {int(row['grand_total'])}", axis=1),
+                lambda row: f"Donor: {row['donor']}<br>Donor Class (Level 2): {row['donor_level2']}<br>Total USD: {int(row['allocation'])}", axis=1),
             orientation='h',
             showlegend=False  # Omit this trace from the legend        
         ), row=i + 1, col=1
@@ -1139,7 +1139,7 @@ def plot_donor_funds(df: pd.DataFrame):
     # Set y-axis range for alignment across subplots
     # Replace 'min_value' and 'max_value' with appropriate limits based on your data
     min_value = 0 
-    max_value = df.groupby(['cp', 'funds_type'], as_index=False)['grand_total'].sum()['grand_total'].max() 
+    max_value = df.groupby(['cp', 'funds_type'], as_index=False)['allocation'].sum()['allocation'].max() 
     for i in range(1, 4):  # Assuming you have 3 rows
         fig.update_xaxes(range=[min_value, max_value], row=i, col=1)
 
@@ -1162,7 +1162,7 @@ def plot_SDG_funds(df: pd.DataFrame):
         df_cp = df[df['cp'] == cp].copy()
         df_cp.sort_values(by=['funds_type', 'goal_area_code'], ascending=[True, True], inplace=True)
         # Assign colors based on the goal area codes using the color map
-        bar_colors = [SDG_color_map[code] for code in df_cp['goal_area_code']]
+        bar_colors = [SDG_color_map[str(code)] for code in df_cp['goal_area_code']]
                 
         # Create a bar chart for the current CP value
         fig.add_trace(go.Bar(
@@ -1349,7 +1349,7 @@ def plot_innovation(df_activities, metric='expenditures'):
             'Innovation', 
             'Digital Transformation'
         ]))
-    ]
+    ].copy()
     
     # Check if there is any data for innovation activities
     if innovation_activities.empty:
@@ -1366,7 +1366,6 @@ def plot_innovation(df_activities, metric='expenditures'):
         # Merge to calculate the percentage of innovation expenditures
         merged_data = pd.merge(resources_over_time, total_resources_over_time, on='year', suffixes=('_innovation', '_total'))
         merged_data['percentage_innovation'] = (merged_data['value_innovation'] / merged_data['value_total']) * 100
-        merged_data['year'] = merged_data['year'].astype(str)
 
         # Titles and labels
         yaxis_title = "Expenditures (USD)"
@@ -1420,7 +1419,12 @@ def plot_innovation(df_activities, metric='expenditures'):
 
     # Update the layout with secondary y-axis
     fig.update_layout(
-        xaxis_title="Year",
+        xaxis=dict(
+          title='Year',
+          tickmode='linear',  # Ensure evenly spaced ticks
+          dtick=1,  # Force integer ticks every 1 year
+          tickformat='d',  # Display ticks as integers (no decimal points)
+        ),
         yaxis=dict(
             title=yaxis_title,
             tickformat=",",  # Use commas for large numbers
@@ -1798,7 +1802,7 @@ def create_stacked_area_chart(df, group_by, value_column, operation):
     
     # Choose aggregation function based on the specified operation
     agg_func = "sum" if operation == "sum" else "nunique"
-
+    df['year'] = df['year'].astype(int)
     # Aggregate data by year and the specified group_by column
     grouped = df.groupby(['year', group_by]).agg(
         aggregated_value=(value_column, agg_func)
@@ -1807,6 +1811,7 @@ def create_stacked_area_chart(df, group_by, value_column, operation):
     # Pivot the data to have years as rows and group_by categories as columns for the area chart
     pivoted = grouped.pivot(index='year', columns=group_by, values='aggregated_value').fillna(0)
 
+    pivoted.index = pivoted.index.astype(str)
     # Define the color map
     color_map = goal_area_colors 
     # Create a stacked area chart using Plotly
@@ -1841,7 +1846,6 @@ def plot_hr_count_against_utilized_by_goal_area(tmp_df: pd.DataFrame):
         color="goal_area", 
         color_discrete_map = goal_area_colors,
         hover_name="goal_area",
-        #log_x=True, 
         size_max=55, 
         #range_x=[0,100000000], 
         #range_y=[0,100],
